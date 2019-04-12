@@ -1,4 +1,4 @@
 
-host: 3498a3de00bd
+host: localhost
 root: /root/mArchiveList/userdata
 port: 8080

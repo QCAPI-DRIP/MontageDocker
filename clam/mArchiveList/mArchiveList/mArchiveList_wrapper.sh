@@ -33,9 +33,6 @@ PARAMETERS=${@:4}
 
 #Output a status message to the status file that users will see in the interface
 echo "Starting..." >> $STATUSFILE
-echo "parameters: $PARAMETERS" >> $STATUSFILE
-echo "INPUTDIRECTORY: $INPUTDIRECTORY" >> $STATUSFILE
-echo "outputfile: $outputfile" >> $STATUSFILE
 
 #Example parameter parsing using getopt:
 #while getopts ":h" opt "$PARAMETERS"; do
@@ -58,10 +55,22 @@ echo "outputfile: $outputfile" >> $STATUSFILE
 #     yoursystem $PARAMETERS < $inputfile > $outputfile
 # done
 
-echo "PARAMETERS[2]: $PARAMETERS[2]"  >> $STATUSFILE
+echo "PARAMETERS: $PARAMETERS" >> $STATUSFILE
+IFS=' ' read -ra PARAMETERS_ARRAY <<< "$PARAMETERS"
+PARAMETERS_ARRAY_SIZE=${#PARAMETERS_ARRAY[@]}
+echo "PARAMETERS_ARRAY_SIZE: $PARAMETERS_ARRAY_SIZE" >> $STATUSFILE
 
-echo "mArchiveList $PARAMETERS remote.tbl" >> $STATUSFILE
-mArchiveList $PARAMETERS remote.tbl >> $STATUSFILE
+if [ "$PARAMETERS_ARRAY_SIZE" -ge 6 ]; then
+    LOCATION="'"${PARAMETERS_ARRAY[2]}" "${PARAMETERS_ARRAY[3]}"'"
+    echo "LOCATION: $LOCATION" >> $STATUSFILE
+    
+    echo "Calling: mArchiveList ${PARAMETERS_ARRAY[0]} ${PARAMETERS_ARRAY[1]} $LOCATION ${PARAMETERS_ARRAY[4]} ${PARAMETERS_ARRAY[5]} ${PARAMETERS_ARRAY[6]} remote.tbl" >> $STATUSFILE
+    mArchiveList ${PARAMETERS_ARRAY[0]} ${PARAMETERS_ARRAY[1]} $LOCATION ${PARAMETERS_ARRAY[4]} ${PARAMETERS_ARRAY[5]} ${PARAMETERS_ARRAY[6]} remote.tbl >> $STATUSFILE
+else
+    echo "Calling: mArchiveList $PARAMETERS remote.tbl" >> $STATUSFILE
+    mArchiveList $PARAMETERS remote.tbl >> $STATUSFILE
+fi
+
 
 echo "Done." >> $STATUSFILE
 

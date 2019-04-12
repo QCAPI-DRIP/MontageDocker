@@ -35,6 +35,7 @@ import sys
 #import CLAM-specific modules. The CLAM API makes a lot of stuff easily accessible.
 import clam.common.data
 import clam.common.status
+import os
 
 #When the wrapper is started, the current working directory corresponds to the project directory, input files are in input/ , output files should go in output/ .
 
@@ -60,6 +61,20 @@ clamdata = clam.common.data.getclamdata(datafile)
 # clamdata.system_id , clamdata.project, clamdata.user, clamdata.status , clamdata.parameters, clamdata.inputformats, clamdata.outputformats , clamdata.input , clamdata.output
 
 clam.common.status.write(statusfile, "Starting...")
+clam.common.status.write(statusfile, "clamdata.system_id: "+clamdata.system_id)
+clam.common.status.write(statusfile, "clamdata.project: "+clamdata.project)
+clam.common.status.write(statusfile, "clamdata.user: "+clamdata.user)
+clam.common.status.write(statusfile, "clamdata.status: "+str(clamdata.status))
+parameters = ','.join([str(i) for i in clamdata.parameters])
+clam.common.status.write(statusfile, "clamdata.parameters: "+parameters)
+#clam.common.status.write(statusfile, "clamdata.inputformats: "+clamdata.inputformats)
+#clam.common.status.write(statusfile, "clamdata.outputformats: "+clamdata.outputformats)
+input = ','.join([str(i) for i in clamdata.input])
+clam.common.status.write(statusfile, "clamdata.input: "+input)
+output = ','.join([str(i) for i in clamdata.output])
+clam.common.status.write(statusfile, "clamdata.output: "+output)
+
+clam.common.status.write(statusfile, "clamdata['survey']: "+clamdata['survey'] )
 
 
 #=========================================================================================================================
@@ -127,8 +142,14 @@ clam.common.status.write(statusfile, "Starting...")
 # specified quotes (second parameter) and makes sure the value doesn't break
 # out of the quoted environment! Can be used without the quote too, but will be
 # do much stricter checks then to ensure security.
-
-#os.system("system.pl " + shellsafe(inputfilepath,'"') );
+if " " in str(clamdata['object|location']) and "\"" not in str(clamdata['object|location']):
+    clam.common.status.write(statusfile, "Calling: "+"mArchiveList " + shellsafe(clamdata['survey'])+" "+shellsafe(clamdata['band'])+" "+shellsafe(clamdata['object|location'],'"')+" "+shellsafe(clamdata['width'])+" "+shellsafe(clamdata['height'])+" output/remote.tbl");
+    result = os.system("mArchiveList " + shellsafe(clamdata['survey'])+" "+shellsafe(clamdata['band'])+" "+shellsafe(clamdata['object|location'],'"')+" "+shellsafe(clamdata['width'])+" "+shellsafe(clamdata['height'])+" output/remote.tbl");
+    clam.common.status.write(statusfile, "result: "+str(result));
+else:
+    clam.common.status.write(statusfile, "Calling: "+"mArchiveList " + shellsafe(clamdata['survey'])+" "+shellsafe(clamdata['band'])+" "+shellsafe(clamdata['object|location'],'"')+" "+shellsafe(clamdata['width'])+" "+shellsafe(clamdata['height'])+" output/remote.tbl")
+    result = os.system("mArchiveList " + shellsafe(clamdata['survey'])+" "+shellsafe(clamdata['band'])+" "+shellsafe(clamdata['object|location'])+" "+shellsafe(clamdata['width'])+" "+shellsafe(clamdata['height'])+" output/remote.tbl");
+    clam.common.status.write(statusfile, "result: "+str(result));
 
 # Rather than execute a single system, call you may want to invoke it multiple
 # times from within one of the iterations.
@@ -136,4 +157,4 @@ clam.common.status.write(statusfile, "Starting...")
 #A nice status message to indicate we're done
 clam.common.status.write(statusfile, "Done",100) # status update
 
-sys.exit(0) #non-zero exit codes indicate an error and will be picked up by CLAM as such!
+sys.exit(result) #non-zero exit codes indicate an error and will be picked up by CLAM as such!

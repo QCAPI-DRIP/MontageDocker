@@ -181,10 +181,10 @@ PROFILES = [
             unique=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
         ),
         #------------------------------------------------------------------------------------------------------------------------
-        OutputTemplate('out',PlainTextFormat,'Two files are created as output provided by the input images.',
+        OutputTemplate('remote',PlainTextFormat,'Two files are created as output provided by the input images.',
             SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
-            extension='.fits', #set an extension or set a filename:
-            #filename='filename.stats',
+            #extension='.tbl', #set an extension or set a filename:
+            filename='remote.tbl',
             unique=True
         ),
     )
@@ -213,10 +213,10 @@ PROFILES = [
 #                        (set to "anonymous" if there is none)
 #     $PARAMETERS      - List of chosen parameters, using the specified flags
 #
-#COMMAND = WEBSERVICEDIR + "/mArchiveList_wrapper.py $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
+COMMAND = WEBSERVICEDIR + "/mArchiveList_wrapper.py $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
 
 #Or for the shell variant:
-COMMAND = WEBSERVICEDIR + "/mArchiveList_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY $PARAMETERS"
+#COMMAND = WEBSERVICEDIR + "/mArchiveList_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY $PARAMETERS"
 
 #Or if you only use the action paradigm, set COMMAND = None
 
