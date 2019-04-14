@@ -38,6 +38,7 @@ import clam.common.status
 import os
 import shutil
 import glob
+import errno
 
 #When the wrapper is started, the current working directory corresponds to the project directory, input files are in input/ , output files should go in output/ .
 
@@ -98,19 +99,33 @@ clam.common.status.write(statusfile, "Starting...")
 # This example iterates over all input files, it can be a simpler
 # method for setting up your wrapper:
 
-#for inputfile in clamdata.input:
-#   inputtemplate = inputfile.metadata.inputtemplate
-#   inputfilepath = str(inputfile)
-#   encoding = inputfile.metadata['encoding'] #Example showing how to obtain metadata parameters
 
+try:
+    os.makedirs("raw", exist_ok=True);
+except OSError as e:
+    if e.errno != errno.EEXIST:
+        raise  # raises the error again
+    
+for inputfile in clamdata.input:
+  inputtemplate = inputfile.metadata.inputtemplate
+  inputfilepath = str(inputfile)
+  encoding = inputfile.metadata['encoding'] #Example showing how to obtain metadata parameters
+  clam.common.status.write(statusfile, "inputfilepath: "+inputfilepath)
+  clam.common.status.write(statusfile, "encoding: "+encoding)
+  ext = os.path.splitext(inputfilepath)[1]
+  clam.common.status.write(statusfile, "ext: "+ext);
+  if (ext == '.fits'):
+      #newPath = shutil.move(inputfilepath, 'raw');
+      shutil.copy2(inputfilepath, "raw")   
+      clam.common.status.write(statusfile, "Moved: "+inputfilepath);
 #(Note: Both these iteration examples will fail if you change the current working directory, so make sure to set it back to the initial path if you do need to change it!!)
 
 #-- EXAMPLE C: Grab a specific input file? (by input template) --
 
 # Iteration over all input files is often not necessary either, you can just do:
 
-inputfile = clamdata.inputfile('region')
-inputfilepath = str(inputfile)
+#inputfile = clamdata.inputfile('replace-with-inputtemplate-id')
+#inputfilepath = str(inputfile)
 
 #========================================================================================
 
@@ -132,20 +147,6 @@ inputfilepath = str(inputfile)
 # do much stricter checks then to ensure security.
 
 #os.system("system.pl " + shellsafe(inputfilepath,'"') );
-clam.common.status.write(statusfile, "inputfilepath: "+inputfilepath);
-clam.common.status.write(statusfile, "clamdata['debugg_level']: "+clamdata['debugg_level']);
-result = os.system("mArchiveExec -d" + shellsafe(clamdata['debugg_level'])+" "+shellsafe(inputfilepath));
-
-if (result == 0):
-    cwd = os.getcwd()
-    files = glob.iglob(os.path.join(cwd, "*.fits"))
-        
-    for file in files:
-        if os.path.isfile(file):
-            clam.common.status.write(statusfile, "Moving: "+file);
-            #shutil.copy2(file, "output")    
-            newPath = shutil.move(file, 'output')
-        
 
 # Rather than execute a single system, call you may want to invoke it multiple
 # times from within one of the iterations.
@@ -153,4 +154,4 @@ if (result == 0):
 #A nice status message to indicate we're done
 clam.common.status.write(statusfile, "Done",100) # status update
 
-sys.exit(result) #non-zero exit codes indicate an error and will be picked up by CLAM as such!
+sys.exit(0) #non-zero exit codes indicate an error and will be picked up by CLAM as such!

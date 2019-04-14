@@ -1,0 +1,4 @@
+
+host: montage_clam
+root: /root/mImgtbl/userdata
+port: 8080
