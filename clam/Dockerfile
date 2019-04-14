@@ -5,8 +5,7 @@ RUN pip3 install requests clam
 
 WORKDIR /root
 
-RUN virtualenv --python=python3 clamenv
-RUN source clamenv/bin/activate && pip3 install clam
+RUN virtualenv --python=python3 clamenv && source clamenv/bin/activate && pip3 install clam
 
 
 

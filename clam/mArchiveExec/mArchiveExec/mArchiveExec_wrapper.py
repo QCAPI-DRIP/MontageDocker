@@ -36,6 +36,8 @@ import sys
 import clam.common.data
 import clam.common.status
 import os
+import shutil
+import glob
 
 #When the wrapper is started, the current working directory corresponds to the project directory, input files are in input/ , output files should go in output/ .
 
@@ -61,20 +63,6 @@ clamdata = clam.common.data.getclamdata(datafile)
 # clamdata.system_id , clamdata.project, clamdata.user, clamdata.status , clamdata.parameters, clamdata.inputformats, clamdata.outputformats , clamdata.input , clamdata.output
 
 clam.common.status.write(statusfile, "Starting...")
-clam.common.status.write(statusfile, "clamdata.system_id: "+clamdata.system_id)
-clam.common.status.write(statusfile, "clamdata.project: "+clamdata.project)
-clam.common.status.write(statusfile, "clamdata.user: "+clamdata.user)
-clam.common.status.write(statusfile, "clamdata.status: "+str(clamdata.status))
-parameters = ','.join([str(i) for i in clamdata.parameters])
-clam.common.status.write(statusfile, "clamdata.parameters: "+parameters)
-#clam.common.status.write(statusfile, "clamdata.inputformats: "+clamdata.inputformats)
-#clam.common.status.write(statusfile, "clamdata.outputformats: "+clamdata.outputformats)
-input = ','.join([str(i) for i in clamdata.input])
-clam.common.status.write(statusfile, "clamdata.input: "+input)
-output = ','.join([str(i) for i in clamdata.output])
-clam.common.status.write(statusfile, "clamdata.output: "+output)
-
-clam.common.status.write(statusfile, "clamdata['survey']: "+clamdata['survey'] )
 
 
 #=========================================================================================================================
@@ -121,8 +109,8 @@ clam.common.status.write(statusfile, "clamdata['survey']: "+clamdata['survey'] )
 
 # Iteration over all input files is often not necessary either, you can just do:
 
-#inputfile = clamdata.inputfile('replace-with-inputtemplate-id')
-#inputfilepath = str(inputfile)
+inputfile = clamdata.inputfile('region')
+inputfilepath = str(inputfile)
 
 #========================================================================================
 
@@ -142,14 +130,21 @@ clam.common.status.write(statusfile, "clamdata['survey']: "+clamdata['survey'] )
 # specified quotes (second parameter) and makes sure the value doesn't break
 # out of the quoted environment! Can be used without the quote too, but will be
 # do much stricter checks then to ensure security.
-if " " in str(clamdata['object|location']) and "\"" not in str(clamdata['object|location']):
-    clam.common.status.write(statusfile, "Calling: "+"mArchiveList " + shellsafe(clamdata['survey'])+" "+shellsafe(clamdata['band'])+" "+shellsafe(clamdata['object|location'],'"')+" "+shellsafe(clamdata['width'])+" "+shellsafe(clamdata['height'])+" output/region.tbl");
-    result = os.system("mArchiveList " + shellsafe(clamdata['survey'])+" "+shellsafe(clamdata['band'])+" "+shellsafe(clamdata['object|location'],'"')+" "+shellsafe(clamdata['width'])+" "+shellsafe(clamdata['height'])+" output/region.tbl");
-    clam.common.status.write(statusfile, "result: "+str(result));
-else:
-    clam.common.status.write(statusfile, "Calling: "+"mArchiveList " + shellsafe(clamdata['survey'])+" "+shellsafe(clamdata['band'])+" "+shellsafe(clamdata['object|location'],'"')+" "+shellsafe(clamdata['width'])+" "+shellsafe(clamdata['height'])+" output/region.tbl")
-    result = os.system("mArchiveList " + shellsafe(clamdata['survey'])+" "+shellsafe(clamdata['band'])+" "+shellsafe(clamdata['object|location'])+" "+shellsafe(clamdata['width'])+" "+shellsafe(clamdata['height'])+" output/region.tbl");
-    clam.common.status.write(statusfile, "result: "+str(result));
+
+#os.system("system.pl " + shellsafe(inputfilepath,'"') );
+clam.common.status.write(statusfile, "inputfilepath: "+inputfilepath);
+clam.common.status.write(statusfile, "clamdata['debugg_level']: "+clamdata['debugg_level']);
+result = os.system("mArchiveExec -d" + shellsafe(clamdata['debugg_level'])+" "+shellsafe(inputfilepath));
+
+if (result == 0):
+    cwd = os.getcwd()
+    files = glob.iglob(os.path.join(cwd, "*.fits"))
+        
+    for file in files:
+        if os.path.isfile(file):
+            clam.common.status.write(statusfile, "Moving: "+file);
+            shutil.copy2(file, "output")    
+        
 
 # Rather than execute a single system, call you may want to invoke it multiple
 # times from within one of the iterations.
