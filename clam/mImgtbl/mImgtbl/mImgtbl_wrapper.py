@@ -101,24 +101,30 @@ clam.common.status.write(statusfile, "Starting...")
 
 
 try:
-    os.makedirs("raw", exist_ok=True);
+    os.makedirs("input/images", exist_ok=True);
 except OSError as e:
     if e.errno != errno.EEXIST:
-        raise  # raises the error again
-    
+        raise
+
+fieldlist_path='';
+imglist_path='';
 for inputfile in clamdata.input:
   inputtemplate = inputfile.metadata.inputtemplate
   inputfilepath = str(inputfile)
-  encoding = inputfile.metadata['encoding'] #Example showing how to obtain metadata parameters
-  clam.common.status.write(statusfile, "inputfilepath: "+inputfilepath)
-  clam.common.status.write(statusfile, "encoding: "+encoding)
+  #encoding = inputfile.metadata['encoding'] #Example showing how to obtain metadata parameters
+  #clam.common.status.write(statusfile, "inputfilepath: "+inputfilepath)
+  #clam.common.status.write(statusfile, "encoding: "+encoding)
   ext = os.path.splitext(inputfilepath)[1]
   clam.common.status.write(statusfile, "ext: "+ext);
   if (ext == '.fits'):
-      #newPath = shutil.move(inputfilepath, 'raw');
-      shutil.copy2(inputfilepath, "raw")   
+      newPath = shutil.move(inputfilepath, "input/images");
       clam.common.status.write(statusfile, "Moved: "+inputfilepath);
-#(Note: Both these iteration examples will fail if you change the current working directory, so make sure to set it back to the initial path if you do need to change it!!)
+  if (ext == '.fieldlist'):
+      fieldlist_path = inputfilepath
+      clam.common.status.write(statusfile, "fieldlist_path: "+fieldlist_path);
+  if (ext == '.imglist'):
+      imglist_path = inputfilepath
+      clam.common.status.write(statusfile, "imglist_path: "+fieldlist_path);
 
 #-- EXAMPLE C: Grab a specific input file? (by input template) --
 
@@ -145,8 +151,33 @@ for inputfile in clamdata.input:
 # specified quotes (second parameter) and makes sure the value doesn't break
 # out of the quoted environment! Can be used without the quote too, but will be
 # do much stricter checks then to ensure security.
+swtches =''
+cmd=''
+if (clamdata['r']):
+    swtches+='r'
+if (clamdata['c']):
+    swtches+='c'
+if (clamdata['C']):
+    swtches+='C'
+if (clamdata['a']):
+    swtches+='a'
+if (clamdata['d']):
+    swtches+='d'    
+if (clamdata['b']):
+    swtches+='b'
+    
+if (swtches):
+    swtches = "-"+swtches
+    cmd+=swtches
 
-#os.system("system.pl " + shellsafe(inputfilepath,'"') );
+if (clamdata['f'] and fieldlist_path):
+    cmd+=" -f "+fieldlist_path
+if(clamdata['t'] and imglist_path):
+    cmd+=" -t "+imglist_path    
+    
+clam.common.status.write(statusfile, "Calling: "+"mImgtbl " + shellsafe(cmd)+" "+shellsafe("input/images") +" "+shellsafe("output/images.tbl"));    
+result = os.system("mImgtbl " + shellsafe(cmd)+" "+shellsafe("input/images") +" "+shellsafe("output/images.tbl"));
+
 
 # Rather than execute a single system, call you may want to invoke it multiple
 # times from within one of the iterations.
@@ -154,4 +185,4 @@ for inputfile in clamdata.input:
 #A nice status message to indicate we're done
 clam.common.status.write(statusfile, "Done",100) # status update
 
-sys.exit(0) #non-zero exit codes indicate an error and will be picked up by CLAM as such!
+sys.exit(result) #non-zero exit codes indicate an error and will be picked up by CLAM as such!
