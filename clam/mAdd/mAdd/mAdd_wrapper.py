@@ -108,32 +108,18 @@ for inputfile in clamdata.input:
 # specified quotes (second parameter) and makes sure the value doesn't break
 # out of the quoted environment! Can be used without the quote too, but will be
 # do much stricter checks then to ensure security.
-
-cmd=''
-if (clamdata['q']):
-    cmd+='-q -p input/images'
-else:
-    cmd+='-p input/images'
-if (clamdata['d']):
-    cmd+=' -d'
+cmd='-p input/images'
+if (clamdata['n']):
+    cmd+=' -n'
+if (clamdata['a']):
+    cmd+=' -a '+shellsafe(clamdata['a'])
 if (clamdata['e']):
     cmd+=' -e'
-if (clamdata['X']):
-    cmd+=' -X'
-if (clamdata['b']):
-    cmd+=' -b '+shellsafe(clamdata['b'])
-if (clamdata['r']):
-    cmd+=' -r '+shellsafe(clamdata['r'])
-if (clamdata['X']):
-    cmd+=' -X '+shellsafe(clamdata['X'])
+if (clamdata['d']):
+    cmd+=' -d '+shellsafe(clamdata['d'])
     
-try:
-    os.makedirs("output/images", exist_ok=True);
-except OSError as e:
-    if e.errno != errno.EEXIST:
-        raise    
-    
-os.system("mProjExec " + cmd +" "+ shellsafe(images_tbl_path)+" "+shellsafe(header_template_path)+" "+shellsafe("output/images")+" "+shellsafe("stats.tbl"));
+
+os.system("mAdd " + cmd +" "+ shellsafe(images_tbl_path)+" "+shellsafe(header_template_path)+" "+shellsafe("output/out.fits"));
 
 # Rather than execute a single system, call you may want to invoke it multiple
 # times from within one of the iterations.
