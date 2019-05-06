@@ -1,0 +1,4 @@
+
+host: montage_clam
+root: /root/mJPEG/userdata
+port: 8080

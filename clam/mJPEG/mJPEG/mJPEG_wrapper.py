@@ -68,27 +68,50 @@ clam.common.status.write(statusfile, "Starting...")
 
 #=========================================================================================================================
 
-try:
-    os.makedirs("input/images", exist_ok=True);
-except OSError as e:
-    if e.errno != errno.EEXIST:
-        raise
+# Below are some examples of how to access the input files and expected output
+# files. Choose and adapt one of examples A, B or C.
 
-images_tbl_path=''  
-header_template_path=''
-for inputfile in clamdata.input:
-  inputtemplate = inputfile.metadata.inputtemplate
-  inputfilepath = str(inputfile)
-  ext = os.path.splitext(inputfilepath)[1]
-  if (ext == '.fits'):
-      newPath = shutil.move(inputfilepath, "input/images");
-      clam.common.status.write(statusfile, "Moved: "+inputfilepath);
-  if (ext == '.tbl'):
-      images_tbl_path = inputfilepath
-      clam.common.status.write(statusfile, "images_tbl_path: "+images_tbl_path);      
-  if (ext == '.hdr'):
-      header_template_path = inputfilepath
-      clam.common.status.write(statusfile, "header_template_path: "+header_template_path); 
+#-- EXAMPLE A: Iterate over the program --
+
+# The 'program' describes exactly what output files will/should be generated on the
+# basis of what input files. It is the concretisation of the profiles and is the
+# most elegant method to set up your wrapper.
+
+#for outputfile, outputtemplate_id in clamdata.program.getoutputfiles():
+#   if outputtemplate.id == 'some_template_id':
+        #(Use outputtemplate_id to match against output templates)
+        #(You can access output metadata using outputfile.metadata[parameter_id])
+#       outputfilepath = str(outputfile) #example showing how to obtain the path to the file
+        #if you expect just a single input file for this output file, you can use this:
+#       inputfile, inputtemplate = clamdata.program.getinputfile(outputfilename)
+        # ...do your thing... e.g., invoke a process that generates outputfilename on the basis of inputfilename (see the invoke your actual system example below)
+        #(You can access input metadata using inputfile.metadata[parameter_id])
+
+        #if, on the other hand, you expect multiple input files, then you can iterate over them:
+#       for inputfile, inputtemplate_id in clamdata.program.getinputfiles(outputfilename):
+#           if inputtemplate_id == 'some_input_template_id':
+#           inputfilepath = str(inputfile) #example showing how to obtain the path to the file
+            #...
+        #...do your thing... e.g., invoke a process that generates outputfilename on the basis all inputfilenames
+
+#-- EXAMPLE B: Iterate over all input files? --
+
+# This example iterates over all input files, it can be a simpler
+# method for setting up your wrapper:
+
+#for inputfile in clamdata.input:
+#   inputtemplate = inputfile.metadata.inputtemplate
+#   inputfilepath = str(inputfile)
+#   encoding = inputfile.metadata['encoding'] #Example showing how to obtain metadata parameters
+
+#(Note: Both these iteration examples will fail if you change the current working directory, so make sure to set it back to the initial path if you do need to change it!!)
+
+#-- EXAMPLE C: Grab a specific input file? (by input template) --
+
+# Iteration over all input files is often not necessary either, you can just do:
+
+#inputfile = clamdata.inputfile('replace-with-inputtemplate-id')
+#inputfilepath = str(inputfile)
 
 #========================================================================================
 
@@ -103,24 +126,35 @@ for inputfile in clamdata.input:
 #parameter = clamdata['parameter_id']
 
 #-- Invoke your actual system? --
-
+#mJPEG [-d] [-t power] [-ct color-table]
+#[-gray in.fits minrange maxrange [logpower/gaussian]
+#[-red red.fits rminrange rmaxrange [rlogpower/gaussian]
+#[-green green.fits gminrange gmaxrange [glogpower/gaussian]
+#[-blue blue.fits bminrange bmaxrange [blogpower/gaussian]
+#-out out.jpg
+cmd='';
+if (clamdata['d']):
+    cmd+=' -d'
+if (clamdata['t']):
+    cmd+=' -t '+shellsafe(clamdata['t'])
+if (clamdata['ct']):
+    cmd+=' -ct '+shellsafe(clamdata['ct'])
+if (clamdata['gray']):
+    cmd+=' -gray '+shellsafe(clamdata['gray'])
+if (clamdata['red']):
+    cmd+=' -red '+shellsafe(clamdata['red'])    
+if (clamdata['green']):
+    cmd+=' -green '+shellsafe(clamdata['green'])  
+if (clamdata['blue']):
+    cmd+=' -blue '+shellsafe(clamdata['blue'])      
+    
 # note the use of the shellsafe() function that wraps a variable in the
 # specified quotes (second parameter) and makes sure the value doesn't break
 # out of the quoted environment! Can be used without the quote too, but will be
 # do much stricter checks then to ensure security.
-cmd='-p input/images'
-if (clamdata['n']):
-    cmd+=' -n'
-if (clamdata['a']):
-    cmd+=' -a '+shellsafe(clamdata['a'])
-if (clamdata['e']):
-    cmd+=' -e'
-if (clamdata['d']):
-    cmd+=' -d '+shellsafe(clamdata['d'])
-    
-
-result = os.system("mAdd " + cmd +" "+ shellsafe(images_tbl_path)+" "+shellsafe(header_template_path)+" "+shellsafe("output/out.fits"));
-
+clam.common.status.write(statusfile, "cmd: mJPEG " + shellsafe(cmd))
+result = os.system("mJPEG " + shellsafe(cmd) );
+clam.common.status.write(statusfile, "Exit code:  "+str(result))
 # Rather than execute a single system, call you may want to invoke it multiple
 # times from within one of the iterations.
 

@@ -1,5 +1,6 @@
 FROM alogo53/montage:5.0
 
+RUN apt-get -y update 
 RUN apt-get install -y python3 python3-pip virtualenv
 RUN pip3 install requests clam
 
