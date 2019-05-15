@@ -58,7 +58,7 @@ outputdir = sys.argv[3]
 #from yourserviceconf import CUSTOM_FORMATS
 
 #Obtain all data from the CLAM system (passed in $DATAFILE (clam.xml)), always pass CUSTOM_FORMATS as second argument if you make use of it!
-clamdata = clam.common.data.getclamdata(datafile)
+#clamdata = clam.common.data.getclamdata(datafile)
 
 #You now have access to all data. A few properties at your disposition now are:
 # clamdata.system_id , clamdata.project, clamdata.user, clamdata.status , clamdata.parameters, clamdata.inputformats, clamdata.outputformats , clamdata.input , clamdata.output
