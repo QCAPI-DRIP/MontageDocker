@@ -166,19 +166,27 @@ clam.common.status.write(statusfile, "return_code: " + str(return_code))
 if (return_code == 0):
     cwd = os.getcwd()
     files = glob.iglob(os.path.join(cwd, "*.fits"))
-    if not files:
+    
+    empty = True
+    for file in files:
+        empty = False
+        break    
+    
+    if empty:
         files = glob.iglob(os.path.join(cwd, "*.fits.gz"))
         for file in files:
             file_name = os.path.splitext(file)[0]
             with gzip.open(file, 'rb') as f_in:
                 with open(file_name, 'wb') as f_out:
                     shutil.copyfileobj(f_in, f_out)
-            clam.common.status.write(statusfile, "Moving: "+file);
+            print("Moving: "+file_name);
+            newPath = shutil.move(file_name, 'output')
+            print("Moving: "+file);
             newPath = shutil.move(file, 'output')
     else:  
         for file in files:
             if os.path.isfile(file):
-                clam.common.status.write(statusfile, "Moving: "+file);
+                print("Moving: "+file);
                 #shutil.copy2(file, "output")    
                 newPath = shutil.move(file, 'output')
         
