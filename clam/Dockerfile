@@ -6,9 +6,17 @@ RUN pip3 install requests clam
 
 WORKDIR /root
 
+COPY mAdd mAdd/
+COPY mArchiveExec mArchiveExec/
+COPY mArchiveList mArchiveList/
+COPY mImgtbl mImgtbl/
+COPY mJPEG mJPEG/
+COPY mProjExec mProjExec/
+
 RUN virtualenv --python=python3 clamenv 
-RUN source clamenv/bin/activate && pip3 install clam
+EXPOSE 8080
 
+ENTRYPOINT source clamenv/bin/activate && pip3 install clam && cd $MONTAGE_MODULE && ./startserver_development.sh
 
-
-ENTRYPOINT tail -f /dev/null #clamservice -H localhost -p 8080 clam.config.textstats
+# docker build -t montage_clam .
+# docker run -e MONTAGE_MODULE=mAdd -it -h montage_clam --name clam -p 8080:8081 montage_clam

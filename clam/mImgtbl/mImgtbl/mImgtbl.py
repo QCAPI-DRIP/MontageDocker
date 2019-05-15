@@ -42,7 +42,7 @@ WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this
 #The System ID, a short alphanumeric identifier for internal use only
 SYSTEM_ID = "mImgtbl"
 #System name, the way the system is presented to the world
-SYSTEM_NAME = ""
+SYSTEM_NAME = "mImgtbl"
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
 SYSTEM_DESCRIPTION = "mImgtbl extracts the FITS header geometry information from a set of files and creates an ASCII image metadata table which is used by several of the other programs. It only collects data from headers that comply with the FITS standard, but reports a count of images that fail that check."

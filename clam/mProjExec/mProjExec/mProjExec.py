@@ -42,10 +42,10 @@ WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this
 #The System ID, a short alphanumeric identifier for internal use only
 SYSTEM_ID = "mProjExec"
 #System name, the way the system is presented to the world
-SYSTEM_NAME = ""
+SYSTEM_NAME = "mProjExec"
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
-SYSTEM_DESCRIPTION = "Enter a nice description for your system"
+SYSTEM_DESCRIPTION = "mProjExec: An executive which runs mProject (or, if possible for the input/output projections, mProjectPP) for each image in an image metadata table. In the case of data cubes, mProjectCube will be used."
 
 #A version label of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)

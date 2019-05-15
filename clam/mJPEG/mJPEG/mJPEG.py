@@ -42,10 +42,10 @@ WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this
 #The System ID, a short alphanumeric identifier for internal use only
 SYSTEM_ID = "mJPEG"
 #System name, the way the system is presented to the world
-SYSTEM_NAME = ""
+SYSTEM_NAME = "mJPEG"
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
-SYSTEM_DESCRIPTION = "Generates a JPEG image file from a FITS file (or a set of three FITS files in color). A data range for each image can be defined, and the data can be stretched by any power of the log() function (including zero: linear). Pseudo-color color tables can be applied in single-image mode. Note: If creating a true color image, all input images must have identical WCS information (ie, same size, resolution, coordinate system, etc)."
+SYSTEM_DESCRIPTION = "mJPEG: Generates a JPEG image file from a FITS file (or a set of three FITS files in color). A data range for each image can be defined, and the data can be stretched by any power of the log() function (including zero: linear). Pseudo-color color tables can be applied in single-image mode. Note: If creating a true color image, all input images must have identical WCS information (ie, same size, resolution, coordinate system, etc)."
 
 #A version label of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)

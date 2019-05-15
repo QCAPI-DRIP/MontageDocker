@@ -42,10 +42,10 @@ WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this
 #The System ID, a short alphanumeric identifier for internal use only
 SYSTEM_ID = "mArchiveList"
 #System name, the way the system is presented to the world
-SYSTEM_NAME = ""
+SYSTEM_NAME = "mArchiveList"
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
-SYSTEM_DESCRIPTION = "Given a location on the sky, archive name, and size in degrees, contact the IRSA server to retrieve a list of archive images. The list contains enough information to support mArchiveGet downloads."
+SYSTEM_DESCRIPTION = "mArchiveList: Given a location on the sky, archive name, and size in degrees, contact the IRSA server to retrieve a list of archive images. The list contains enough information to support mArchiveGet downloads."
 
 #A version label of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)

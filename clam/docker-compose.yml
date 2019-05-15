@@ -1,0 +1,52 @@
+version: '3.2'
+
+services:
+  add:
+    image: montage_clam
+    hostname: montage_clam
+    environment:
+            MONTAGE_MODULE: mAdd
+    ports:
+    - "8080:8080"
+  
+  archive_exec:
+    image: montage_clam
+    hostname: montage_clam
+    environment:
+            MONTAGE_MODULE: mArchiveExec
+    ports:
+    - "8081:8080"    
+    
+  archive_list:
+    image: montage_clam
+    hostname: montage_clam
+    environment:
+            MONTAGE_MODULE: mArchiveList
+    ports:
+    - "8082:8080"    
+    
+  img_tbl:
+    image: montage_clam
+    hostname: montage_clam
+    environment:
+            MONTAGE_MODULE: mImgtbl
+    ports:
+    - "8083:8080"    
+    
+  jpeg:
+    image: montage_clam
+    hostname: montage_clam
+    environment:
+            MONTAGE_MODULE: mJPEG
+    ports:
+    - "8084:8080"      
+    
+    
+  proj_exec:
+    image: montage_clam
+    hostname: montage_clam
+    environment:
+            MONTAGE_MODULE: mProjExec
+    ports:
+    - "8085:8080"       
+    

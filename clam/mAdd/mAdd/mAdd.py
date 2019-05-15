@@ -42,10 +42,10 @@ WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this
 #The System ID, a short alphanumeric identifier for internal use only
 SYSTEM_ID = "mAdd"
 #System name, the way the system is presented to the world
-SYSTEM_NAME = ""
+SYSTEM_NAME = "mAdd"
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
-SYSTEM_DESCRIPTION = " Coadd the reprojected images in an input list to form an output mosaic with FITS header keywords specified in a header file. Creates two output files, one containing the coadded pixel values, and the other containing coadded pixel area values. The pixel area values can be used as a weighting function if the output pixel values are themselves to be coadded with other projected images, and may also be used in validating the fidelity of the output pixel values."
+SYSTEM_DESCRIPTION = " mAdd: Coadd the reprojected images in an input list to form an output mosaic with FITS header keywords specified in a header file. Creates two output files, one containing the coadded pixel values, and the other containing coadded pixel area values. The pixel area values can be used as a weighting function if the output pixel values are themselves to be coadded with other projected images, and may also be used in validating the fidelity of the output pixel values."
 
 #A version label of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)

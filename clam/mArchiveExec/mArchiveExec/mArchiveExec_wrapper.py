@@ -38,6 +38,9 @@ import clam.common.status
 import os
 import shutil
 import glob
+import subprocess
+import time
+import gzip
 
 #When the wrapper is started, the current working directory corresponds to the project directory, input files are in input/ , output files should go in output/ .
 
@@ -134,17 +137,50 @@ inputfilepath = str(inputfile)
 #os.system("system.pl " + shellsafe(inputfilepath,'"') );
 clam.common.status.write(statusfile, "inputfilepath: "+inputfilepath);
 clam.common.status.write(statusfile, "clamdata['debugg_level']: "+clamdata['debugg_level']);
-result = os.system("mArchiveExec -d" + shellsafe(clamdata['debugg_level'])+" "+shellsafe(inputfilepath));
+return_code = os.system("mArchiveExec -d" + shellsafe(clamdata['debugg_level'])+" "+shellsafe(inputfilepath));
 
-if (result == 0):
+#try:
+    ##out = subprocess.check_output(["mArchiveExec","-d",shellsafe(clamdata['debugg_level']),shellsafe(inputfilepath)])
+    #p = subprocess.Popen(["mArchiveExec","-d",shellsafe(clamdata['debugg_level']),shellsafe(inputfilepath)],
+                     #stdout=subprocess.PIPE,
+                     #stderr=subprocess.STDOUT)
+#except subprocess.CalledProcessError as err:
+    #clam.common.status.write(statusfile, "err: "+err);
+    
+#try:
+    ## Filter stdout
+    #for line in iter(p.stdout.readline, ''):
+        #sys.stdout.flush()
+        #clam.common.status.write(statusfile, ">>> " + line.rstrip())
+        #sys.stdout.flush()
+#except:
+    #sys.stdout.flush()
+    
+#while p.poll() is None:
+    ## Process hasn't exited yet, let's wait some
+    #time.sleep(0.5)
+    
+#return_code = p.returncode
+clam.common.status.write(statusfile, "return_code: " + str(return_code))
+
+if (return_code == 0):
     cwd = os.getcwd()
     files = glob.iglob(os.path.join(cwd, "*.fits"))
-        
-    for file in files:
-        if os.path.isfile(file):
+    if not files:
+        files = glob.iglob(os.path.join(cwd, "*.fits.gz"))
+        for file in files:
+            file_name = os.path.splitext(file)[0]
+            with gzip.open(file, 'rb') as f_in:
+                with open(file_name, 'wb') as f_out:
+                    shutil.copyfileobj(f_in, f_out)
             clam.common.status.write(statusfile, "Moving: "+file);
-            #shutil.copy2(file, "output")    
             newPath = shutil.move(file, 'output')
+    else:  
+        for file in files:
+            if os.path.isfile(file):
+                clam.common.status.write(statusfile, "Moving: "+file);
+                #shutil.copy2(file, "output")    
+                newPath = shutil.move(file, 'output')
         
 
 # Rather than execute a single system, call you may want to invoke it multiple
@@ -153,4 +189,4 @@ if (result == 0):
 #A nice status message to indicate we're done
 clam.common.status.write(statusfile, "Done",100) # status update
 
-sys.exit(result) #non-zero exit codes indicate an error and will be picked up by CLAM as such!
+sys.exit(return_code) #non-zero exit codes indicate an error and will be picked up by CLAM as such!
