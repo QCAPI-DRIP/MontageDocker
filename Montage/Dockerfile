@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 MAINTAINER S. Koulouzis
 
-ARG montage_version=v6.0
+ARG montage_version=v5.0
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN apt-get update && apt-get upgrade -y
@@ -14,7 +14,6 @@ RUN pwd
 
 RUN wget http://montage.ipac.caltech.edu/download/Montage_$montage_version.tar.gz
 RUN tar -xzf Montage_$montage_version.tar.gz
-RUN ls
 WORKDIR Montage
 RUN make
 
@@ -37,6 +36,7 @@ RUN source /root/.bashrc
 WORKDIR examples
 RUN chmod +x *.sh
 # RUN ./downloadDSS.sh
+# RUN sh pleiades.sh
  
-#ENTRYPOINT tail -f /dev/null
+# ENTRYPOINT tail -f /dev/null
 # ENTRYPOINT sh pleiades.sh > out.log 

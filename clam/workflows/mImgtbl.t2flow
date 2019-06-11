@@ -1,0 +1,1403 @@
+<workflow xmlns="http://taverna.sf.net/2008/xml/t2flow" version="1" producedBy="taverna-core-2.5.0"><dataflow id="f513ad97-2188-488a-9918-05472abb4247" role="top"><name>Workflow49</name><inputPorts><port><name>port</name><depth>0</depth><granularDepth>0</granularDepth><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.ExampleValue">
+        <text>8083</text>
+      </annotationBean>
+      <date>2019-05-15 12:04:51.561 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>yourprojectname</name><depth>0</depth><granularDepth>0</granularDepth><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.ExampleValue">
+        <text>1</text>
+      </annotationBean>
+      <date>2019-05-15 12:05:13.361 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>call_parameters</name><depth>0</depth><granularDepth>0</granularDepth><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.ExampleValue">
+        <text>r=false&amp;c=false&amp;C=false&amp;a=false&amp;d=false&amp;b=false&amp;f=false&amp;t=false</text>
+      </annotationBean>
+      <date>2019-05-15 13:59:17.764 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port></inputPorts><outputPorts><port><name>execution_status</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port><port><name>all</name><lastPredictedDepth>1</lastPredictedDepth><annotations /></port><port><name>error_log</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port><port><name>images_tbl</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port></outputPorts><processors><processor><name>mImgtbl_init</name><inputPorts><port><name>port</name><depth>0</depth></port><port><name>yourprojectname</name><depth>0</depth></port></inputPorts><outputPorts /><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>rest-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.rest.RESTActivity</class><inputMap><map from="port" to="port" /><map from="yourprojectname" to="yourprojectname" /></inputMap><outputMap /><configBean encoding="xstream"><net.sf.taverna.t2.activities.rest.RESTActivityConfigurationBean xmlns="">
+  <httpMethod>PUT</httpMethod>
+  <urlSignature>http://0.0.0.0:{port}/{yourprojectname}</urlSignature>
+  <acceptsHeaderValue>*/*</acceptsHeaderValue>
+  <contentTypeForUpdates>application/json</contentTypeForUpdates>
+  <outgoingDataFormat>String</outgoingDataFormat>
+  <sendHTTPExpectRequestHeader>false</sendHTTPExpectRequestHeader>
+  <showRedirectionOutputPort>false</showRedirectionOutputPort>
+  <showActualUrlPort>false</showActualUrlPort>
+  <showResponseHeadersPort>false</showResponseHeadersPort>
+  <escapeParameters>true</escapeParameters>
+  <otherHTTPHeaders />
+  <activityInputs>
+    <entry>
+      <string>port</string>
+      <java-class>java.lang.String</java-class>
+    </entry>
+    <entry>
+      <string>yourprojectname</string>
+      <java-class>java.lang.String</java-class>
+    </entry>
+  </activityInputs>
+</net.sf.taverna.t2.activities.rest.RESTActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="port" depth="0" /><port name="yourprojectname" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>mImgtbl_call</name><inputPorts><port><name>yourprojectname</name><depth>0</depth></port><port><name>port</name><depth>0</depth></port><port><name>inputBody</name><depth>0</depth></port></inputPorts><outputPorts /><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>rest-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.rest.RESTActivity</class><inputMap><map from="port" to="port" /><map from="inputBody" to="inputBody" /><map from="yourprojectname" to="yourprojectname" /></inputMap><outputMap /><configBean encoding="xstream"><net.sf.taverna.t2.activities.rest.RESTActivityConfigurationBean xmlns="">
+  <httpMethod>POST</httpMethod>
+  <urlSignature>http://0.0.0.0:{port}/{yourprojectname}</urlSignature>
+  <acceptsHeaderValue>*/*</acceptsHeaderValue>
+  <contentTypeForUpdates>application/json</contentTypeForUpdates>
+  <outgoingDataFormat>String</outgoingDataFormat>
+  <sendHTTPExpectRequestHeader>false</sendHTTPExpectRequestHeader>
+  <showRedirectionOutputPort>false</showRedirectionOutputPort>
+  <showActualUrlPort>false</showActualUrlPort>
+  <showResponseHeadersPort>false</showResponseHeadersPort>
+  <escapeParameters>true</escapeParameters>
+  <otherHTTPHeaders />
+  <activityInputs>
+    <entry>
+      <string>port</string>
+      <java-class>java.lang.String</java-class>
+    </entry>
+    <entry>
+      <string>yourprojectname</string>
+      <java-class>java.lang.String</java-class>
+    </entry>
+  </activityInputs>
+</net.sf.taverna.t2.activities.rest.RESTActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="yourprojectname" depth="0" /><port name="port" depth="0" /><port name="inputBody" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>check_status</name><inputPorts><port><name>port</name><depth>0</depth></port><port><name>yourprojectname</name><depth>0</depth></port></inputPorts><outputPorts><port><name>responseBody</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>execution_status</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>dataflow-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.dataflow.DataflowActivity</class><inputMap><map from="port" to="port" /><map from="yourprojectname" to="yourprojectname" /></inputMap><outputMap><map from="responseBody" to="responseBody" /><map from="execution_status" to="execution_status" /></outputMap><configBean encoding="dataflow"><dataflow ref="575de19b-f366-40b5-8d40-62b1c713f0ad" /></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Loop</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.LoopConfiguration xmlns="">
+  <conditionXML>&lt;activity xmlns="http://taverna.sf.net/2008/xml/t2flow"&gt;&lt;raven&gt;&lt;group&gt;net.sf.taverna.t2.activities&lt;/group&gt;&lt;artifact&gt;beanshell-activity&lt;/artifact&gt;&lt;version&gt;1.5&lt;/version&gt;&lt;/raven&gt;&lt;class&gt;net.sf.taverna.t2.activities.beanshell.BeanshellActivity&lt;/class&gt;&lt;inputMap /&gt;&lt;outputMap /&gt;&lt;configBean encoding="xstream"&gt;&lt;net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean xmlns=""&gt;&#xD;
+  &lt;inputs&gt;&#xD;
+    &lt;net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean&gt;&#xD;
+      &lt;name&gt;execution_status&lt;/name&gt;&#xD;
+      &lt;depth&gt;0&lt;/depth&gt;&#xD;
+      &lt;translatedElementType&gt;java.lang.String&lt;/translatedElementType&gt;&#xD;
+      &lt;allowsLiteralValues&gt;true&lt;/allowsLiteralValues&gt;&#xD;
+    &lt;/net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean&gt;&#xD;
+  &lt;/inputs&gt;&#xD;
+  &lt;outputs&gt;&#xD;
+    &lt;net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean&gt;&#xD;
+      &lt;name&gt;loop&lt;/name&gt;&#xD;
+      &lt;depth&gt;0&lt;/depth&gt;&#xD;
+      &lt;granularDepth&gt;0&lt;/granularDepth&gt;&#xD;
+    &lt;/net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean&gt;&#xD;
+  &lt;/outputs&gt;&#xD;
+  &lt;classLoaderSharing&gt;workflow&lt;/classLoaderSharing&gt;&#xD;
+  &lt;localDependencies /&gt;&#xD;
+  &lt;artifactDependencies /&gt;&#xD;
+  &lt;script&gt;loop = "" + ! execution_status.equals("2"); &#xD;
+if ("true".matches(loop)) {&#xD;
+   Thread.sleep(500);&#xD;
+}&lt;/script&gt;&#xD;
+  &lt;dependencies /&gt;&#xD;
+&lt;/net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean&gt;&lt;/configBean&gt;&lt;annotations /&gt;&lt;/activity&gt;</conditionXML>
+  <runFirst>true</runFirst>
+  <properties>
+    <property name="compareValue" value="2" />
+    <property name="comparePort" value="execution_status" />
+    <property name="delay" value="0.5" />
+    <property name="comparison" value="EqualTo" />
+    <property name="isFeedBack" value="false" />
+  </properties>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.LoopConfiguration></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="port" depth="0" /><port name="yourprojectname" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>XPath_all</name><inputPorts><port><name>xml_text</name><depth>0</depth></port></inputPorts><outputPorts><port><name>nodelist</name><depth>1</depth><granularDepth>1</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>xpath-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.xpath.XPathActivity</class><inputMap><map from="xml_text" to="xml_text" /></inputMap><outputMap><map from="nodelist" to="nodelist" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean xmlns="">
+  <xmlDocument>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="http://0.0.0.0:8083/static/interface.xsl"?&gt;&lt;clam xmlns:xlink="http://www.w3.org/1999/xlink" version="2.4.4" id="mImgtbl" name="mImgtbl" project="1" user="anonymous" baseurl="http://0.0.0.0:8083" accesstoken="a13d1333119dd44be402bef71a1a5e96" interfaceoptions="" oauth_access_token="" authentication="none"&gt;
+    &lt;description&gt;mImgtbl extracts the FITS header geometry information from a set of files and creates an ASCII image metadata table which is used by several of the other programs. It only collects data from headers that comply with the FITS standard, but reports a count of images that fail that check.&lt;/description&gt;
+    &lt;version/&gt;
+    &lt;author/&gt;
+    &lt;email/&gt;
+    &lt;status code="2" message="Done" completion="100" errors="no" errormsg=""&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="100"&gt;Done&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Calling: mImgtbl  input/images output/images.tbl&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Moved: input/poss2ukstu_red_001_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;ext: .fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Moved: input/poss2ukstu_red_001_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;ext: .fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Moved: input/poss2ukstu_red_001_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;ext: .fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Starting...&lt;/log&gt;
+    &lt;/status&gt;
+    &lt;profiles&gt;
+            
+        &lt;profile&gt;
+         &lt;input&gt;
+            &lt;InputTemplate id="directory" format="PlainTextFormat" label="input FITS files" mimetype="text/plain" extension="fits" optional="no" unique="no" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+         &lt;/input&gt;
+         &lt;output&gt;
+            &lt;OutputTemplate id="images" format="PlainTextFormat" label="Output table contains metadata information from all readable FITS files in the directory specified by directory. count is the number of records in the table, and badfits is the number of files for which FITS metadata could not be extracted." mimetype="text/plain" filename="images.tbl" unique="yes"&gt;
+                &lt;meta id="encoding"&gt;utf-8&lt;/meta&gt;
+            &lt;/OutputTemplate&gt;
+         &lt;/output&gt;
+        &lt;/profile&gt;
+
+    &lt;/profiles&gt;
+    &lt;parameters&gt;
+        &lt;parametergroup name="Group title"&gt;
+                    &lt;BooleanParameter id="r" name="recursive" description="mImgtbl can also be used as a standalone program to gather image metadata for other purposes (to populate a database, as a basis for spatial coverage searches, etc.) In this case it is often desirable to collect information on all the files in a directory tree recursively. The &amp;quot;-r&amp;quot; (recursive) flag instructs mImgtbl to search the given directory and all its subdirectories recursively."/&gt;
+                    &lt;BooleanParameter id="c" name="corners" description="The &amp;quot;-c&amp;quot; (corners) option in mImgtbl will cause eight extra columns to be added to the output metadata table containing the RA, Dec coordinates (ra1, dec1, ... ra4, dec4) of the image corners. The output is always Equatorial J2000, even if the input is some other system. Though not required for the core proessing modules, we recommend using this option, as some of the utilities may require corner locations to function properly."/&gt;
+                    &lt;BooleanParameter id="C" name="no-cube" description="The original version of mImgtbl ignored cube structure in the files; it only looked at the first two dimensions and associated WCS parameters. When cube processing was added to Montage, it was necessary to examine the third and fourth dimensions (if they exist) and so some additional columns were added to the mImgtbl output (e.g., NAXIS4, CRVAL3). It is still often the case where all of the new columns would be blank, so to save space the old mode output can be invoked using the &amp;quot;-C&amp;quot; (no-cube) option. This is cosmetic for the most part, since the &amp;quot;four-dimensional&amp;quot; output is perfectly valid for further processing of 2D data."/&gt;
+                    &lt;BooleanParameter id="a" name="_area" description="By default, mImgtbl ignores FITS files with names ending in _area (i.e. name_area.fits), assuming them to be Montage-created area images. If you want to generate information on these images, or if you have images with _area in the title other than those generated by Montage, you should turn on this flag to force mImgtbl to look at all images in the directory."/&gt;
+                    &lt;BooleanParameter id="d" name="debugging" description="Turn on debugging"/&gt;
+                    &lt;BooleanParameter id="b" name="b" description="When this switch is set, mImgtbl will explicitly output each FITS file it finds that does not appear to be valid, along with information on the error."/&gt;
+                    &lt;BooleanParameter id="f" name="f" description="Used to specify a fieldlist, which will list additional keywords to be read from the FITS headers and included in the output table. Fieldlists should specify the keyword name, type (int,char,double), and size. Example: example.fieldlist."/&gt;
+                    &lt;BooleanParameter id="t" name="t" description="mImgtbl will only process files with names specified in table imglist, ignoring any other files in the directory. Example: example.imglist."/&gt;
+        &lt;/parametergroup&gt;
+    &lt;/parameters&gt;
+    &lt;program matchedprofiles="0"&gt;
+        &lt;outputfile name="images.tbl" template="images" xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/output/images.tbl"&gt;
+        &lt;/outputfile&gt;
+    &lt;/program&gt;
+    &lt;output&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/output/error.log"&gt;
+                &lt;name&gt;error.log&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/output/images.tbl" template="images"&gt;
+                &lt;name&gt;images.tbl&lt;/name&gt;
+            &lt;/file&gt;
+    &lt;/output&gt;
+    &lt;inputsources&gt;
+    &lt;/inputsources&gt;
+    &lt;input&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/input/images/poss2ukstu_red_001_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/input/images/poss2ukstu_red_001_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/input/images/poss2ukstu_red_001_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+    &lt;/input&gt;
+&lt;/clam&gt;</xmlDocument>
+  <xpathExpression>/clam/output/file/@xlink:href</xpathExpression>
+  <xpathNamespaceMap>
+    <entry>
+      <string>xlink</string>
+      <string>http://www.w3.org/1999/xlink</string>
+    </entry>
+  </xpathNamespaceMap>
+</net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="xml_text" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>XPath_images_tbl</name><inputPorts><port><name>xml_text</name><depth>0</depth></port></inputPorts><outputPorts><port><name>firstNode</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>xpath-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.xpath.XPathActivity</class><inputMap><map from="xml_text" to="xml_text" /></inputMap><outputMap><map from="firstNode" to="firstNode" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean xmlns="">
+  <xmlDocument>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="http://0.0.0.0:8083/static/interface.xsl"?&gt;&lt;clam xmlns:xlink="http://www.w3.org/1999/xlink" version="2.4.4" id="mImgtbl" name="mImgtbl" project="1" user="anonymous" baseurl="http://0.0.0.0:8083" accesstoken="a13d1333119dd44be402bef71a1a5e96" interfaceoptions="" oauth_access_token="" authentication="none"&gt;
+    &lt;description&gt;mImgtbl extracts the FITS header geometry information from a set of files and creates an ASCII image metadata table which is used by several of the other programs. It only collects data from headers that comply with the FITS standard, but reports a count of images that fail that check.&lt;/description&gt;
+    &lt;version/&gt;
+    &lt;author/&gt;
+    &lt;email/&gt;
+    &lt;status code="2" message="Done" completion="100" errors="no" errormsg=""&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="100"&gt;Done&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Calling: mImgtbl  input/images output/images.tbl&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Moved: input/poss2ukstu_red_001_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;ext: .fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Moved: input/poss2ukstu_red_001_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;ext: .fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Moved: input/poss2ukstu_red_001_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;ext: .fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Starting...&lt;/log&gt;
+    &lt;/status&gt;
+    &lt;profiles&gt;
+            
+        &lt;profile&gt;
+         &lt;input&gt;
+            &lt;InputTemplate id="directory" format="PlainTextFormat" label="input FITS files" mimetype="text/plain" extension="fits" optional="no" unique="no" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+         &lt;/input&gt;
+         &lt;output&gt;
+            &lt;OutputTemplate id="images" format="PlainTextFormat" label="Output table contains metadata information from all readable FITS files in the directory specified by directory. count is the number of records in the table, and badfits is the number of files for which FITS metadata could not be extracted." mimetype="text/plain" filename="images.tbl" unique="yes"&gt;
+                &lt;meta id="encoding"&gt;utf-8&lt;/meta&gt;
+            &lt;/OutputTemplate&gt;
+         &lt;/output&gt;
+        &lt;/profile&gt;
+
+    &lt;/profiles&gt;
+    &lt;parameters&gt;
+        &lt;parametergroup name="Group title"&gt;
+                    &lt;BooleanParameter id="r" name="recursive" description="mImgtbl can also be used as a standalone program to gather image metadata for other purposes (to populate a database, as a basis for spatial coverage searches, etc.) In this case it is often desirable to collect information on all the files in a directory tree recursively. The &amp;quot;-r&amp;quot; (recursive) flag instructs mImgtbl to search the given directory and all its subdirectories recursively."/&gt;
+                    &lt;BooleanParameter id="c" name="corners" description="The &amp;quot;-c&amp;quot; (corners) option in mImgtbl will cause eight extra columns to be added to the output metadata table containing the RA, Dec coordinates (ra1, dec1, ... ra4, dec4) of the image corners. The output is always Equatorial J2000, even if the input is some other system. Though not required for the core proessing modules, we recommend using this option, as some of the utilities may require corner locations to function properly."/&gt;
+                    &lt;BooleanParameter id="C" name="no-cube" description="The original version of mImgtbl ignored cube structure in the files; it only looked at the first two dimensions and associated WCS parameters. When cube processing was added to Montage, it was necessary to examine the third and fourth dimensions (if they exist) and so some additional columns were added to the mImgtbl output (e.g., NAXIS4, CRVAL3). It is still often the case where all of the new columns would be blank, so to save space the old mode output can be invoked using the &amp;quot;-C&amp;quot; (no-cube) option. This is cosmetic for the most part, since the &amp;quot;four-dimensional&amp;quot; output is perfectly valid for further processing of 2D data."/&gt;
+                    &lt;BooleanParameter id="a" name="_area" description="By default, mImgtbl ignores FITS files with names ending in _area (i.e. name_area.fits), assuming them to be Montage-created area images. If you want to generate information on these images, or if you have images with _area in the title other than those generated by Montage, you should turn on this flag to force mImgtbl to look at all images in the directory."/&gt;
+                    &lt;BooleanParameter id="d" name="debugging" description="Turn on debugging"/&gt;
+                    &lt;BooleanParameter id="b" name="b" description="When this switch is set, mImgtbl will explicitly output each FITS file it finds that does not appear to be valid, along with information on the error."/&gt;
+                    &lt;BooleanParameter id="f" name="f" description="Used to specify a fieldlist, which will list additional keywords to be read from the FITS headers and included in the output table. Fieldlists should specify the keyword name, type (int,char,double), and size. Example: example.fieldlist."/&gt;
+                    &lt;BooleanParameter id="t" name="t" description="mImgtbl will only process files with names specified in table imglist, ignoring any other files in the directory. Example: example.imglist."/&gt;
+        &lt;/parametergroup&gt;
+    &lt;/parameters&gt;
+    &lt;program matchedprofiles="0"&gt;
+        &lt;outputfile name="images.tbl" template="images" xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/output/images.tbl"&gt;
+        &lt;/outputfile&gt;
+    &lt;/program&gt;
+    &lt;output&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/output/error.log"&gt;
+                &lt;name&gt;error.log&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/output/images.tbl" template="images"&gt;
+                &lt;name&gt;images.tbl&lt;/name&gt;
+            &lt;/file&gt;
+    &lt;/output&gt;
+    &lt;inputsources&gt;
+    &lt;/inputsources&gt;
+    &lt;input&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/input/images/poss2ukstu_red_001_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/input/images/poss2ukstu_red_001_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/input/images/poss2ukstu_red_001_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+    &lt;/input&gt;
+&lt;/clam&gt;</xmlDocument>
+  <xpathExpression>/clam/output/file[ends-with(@xlink:href, '.tbl')]/@xlink:href</xpathExpression>
+  <xpathNamespaceMap>
+    <entry>
+      <string>xlink</string>
+      <string>http://www.w3.org/1999/xlink</string>
+    </entry>
+  </xpathNamespaceMap>
+</net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="xml_text" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>XPath_error_log</name><inputPorts><port><name>xml_text</name><depth>0</depth></port></inputPorts><outputPorts><port><name>firstNode</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>xpath-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.xpath.XPathActivity</class><inputMap><map from="xml_text" to="xml_text" /></inputMap><outputMap><map from="firstNode" to="firstNode" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean xmlns="">
+  <xmlDocument>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="http://0.0.0.0:8083/static/interface.xsl"?&gt;&lt;clam xmlns:xlink="http://www.w3.org/1999/xlink" version="2.4.4" id="mImgtbl" name="mImgtbl" project="1" user="anonymous" baseurl="http://0.0.0.0:8083" accesstoken="a13d1333119dd44be402bef71a1a5e96" interfaceoptions="" oauth_access_token="" authentication="none"&gt;
+    &lt;description&gt;mImgtbl extracts the FITS header geometry information from a set of files and creates an ASCII image metadata table which is used by several of the other programs. It only collects data from headers that comply with the FITS standard, but reports a count of images that fail that check.&lt;/description&gt;
+    &lt;version/&gt;
+    &lt;author/&gt;
+    &lt;email/&gt;
+    &lt;status code="2" message="Done" completion="100" errors="no" errormsg=""&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="100"&gt;Done&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Calling: mImgtbl  input/images output/images.tbl&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Moved: input/poss2ukstu_red_001_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;ext: .fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Moved: input/poss2ukstu_red_001_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;ext: .fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Moved: input/poss2ukstu_red_001_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;ext: .fits&lt;/log&gt;
+        &lt;log time="15/May/2019 14:00:01" completion="0"&gt;Starting...&lt;/log&gt;
+    &lt;/status&gt;
+    &lt;profiles&gt;
+            
+        &lt;profile&gt;
+         &lt;input&gt;
+            &lt;InputTemplate id="directory" format="PlainTextFormat" label="input FITS files" mimetype="text/plain" extension="fits" optional="no" unique="no" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+         &lt;/input&gt;
+         &lt;output&gt;
+            &lt;OutputTemplate id="images" format="PlainTextFormat" label="Output table contains metadata information from all readable FITS files in the directory specified by directory. count is the number of records in the table, and badfits is the number of files for which FITS metadata could not be extracted." mimetype="text/plain" filename="images.tbl" unique="yes"&gt;
+                &lt;meta id="encoding"&gt;utf-8&lt;/meta&gt;
+            &lt;/OutputTemplate&gt;
+         &lt;/output&gt;
+        &lt;/profile&gt;
+
+    &lt;/profiles&gt;
+    &lt;parameters&gt;
+        &lt;parametergroup name="Group title"&gt;
+                    &lt;BooleanParameter id="r" name="recursive" description="mImgtbl can also be used as a standalone program to gather image metadata for other purposes (to populate a database, as a basis for spatial coverage searches, etc.) In this case it is often desirable to collect information on all the files in a directory tree recursively. The &amp;quot;-r&amp;quot; (recursive) flag instructs mImgtbl to search the given directory and all its subdirectories recursively."/&gt;
+                    &lt;BooleanParameter id="c" name="corners" description="The &amp;quot;-c&amp;quot; (corners) option in mImgtbl will cause eight extra columns to be added to the output metadata table containing the RA, Dec coordinates (ra1, dec1, ... ra4, dec4) of the image corners. The output is always Equatorial J2000, even if the input is some other system. Though not required for the core proessing modules, we recommend using this option, as some of the utilities may require corner locations to function properly."/&gt;
+                    &lt;BooleanParameter id="C" name="no-cube" description="The original version of mImgtbl ignored cube structure in the files; it only looked at the first two dimensions and associated WCS parameters. When cube processing was added to Montage, it was necessary to examine the third and fourth dimensions (if they exist) and so some additional columns were added to the mImgtbl output (e.g., NAXIS4, CRVAL3). It is still often the case where all of the new columns would be blank, so to save space the old mode output can be invoked using the &amp;quot;-C&amp;quot; (no-cube) option. This is cosmetic for the most part, since the &amp;quot;four-dimensional&amp;quot; output is perfectly valid for further processing of 2D data."/&gt;
+                    &lt;BooleanParameter id="a" name="_area" description="By default, mImgtbl ignores FITS files with names ending in _area (i.e. name_area.fits), assuming them to be Montage-created area images. If you want to generate information on these images, or if you have images with _area in the title other than those generated by Montage, you should turn on this flag to force mImgtbl to look at all images in the directory."/&gt;
+                    &lt;BooleanParameter id="d" name="debugging" description="Turn on debugging"/&gt;
+                    &lt;BooleanParameter id="b" name="b" description="When this switch is set, mImgtbl will explicitly output each FITS file it finds that does not appear to be valid, along with information on the error."/&gt;
+                    &lt;BooleanParameter id="f" name="f" description="Used to specify a fieldlist, which will list additional keywords to be read from the FITS headers and included in the output table. Fieldlists should specify the keyword name, type (int,char,double), and size. Example: example.fieldlist."/&gt;
+                    &lt;BooleanParameter id="t" name="t" description="mImgtbl will only process files with names specified in table imglist, ignoring any other files in the directory. Example: example.imglist."/&gt;
+        &lt;/parametergroup&gt;
+    &lt;/parameters&gt;
+    &lt;program matchedprofiles="0"&gt;
+        &lt;outputfile name="images.tbl" template="images" xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/output/images.tbl"&gt;
+        &lt;/outputfile&gt;
+    &lt;/program&gt;
+    &lt;output&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/output/error.log"&gt;
+                &lt;name&gt;error.log&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/output/images.tbl" template="images"&gt;
+                &lt;name&gt;images.tbl&lt;/name&gt;
+            &lt;/file&gt;
+    &lt;/output&gt;
+    &lt;inputsources&gt;
+    &lt;/inputsources&gt;
+    &lt;input&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/input/images/poss2ukstu_red_001_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/input/images/poss2ukstu_red_001_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8083/1/input/images/poss2ukstu_red_001_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+    &lt;/input&gt;
+&lt;/clam&gt;</xmlDocument>
+  <xpathExpression>/clam/output/file[ends-with(@xlink:href, '.log')]/@xlink:href</xpathExpression>
+  <xpathNamespaceMap>
+    <entry>
+      <string>xlink</string>
+      <string>http://www.w3.org/1999/xlink</string>
+    </entry>
+  </xpathNamespaceMap>
+</net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="xml_text" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor></processors><conditions><condition control="mImgtbl_call" target="check_status" /></conditions><datalinks><datalink><sink type="processor"><processor>mImgtbl_init</processor><port>port</port></sink><source type="dataflow"><port>port</port></source></datalink><datalink><sink type="processor"><processor>mImgtbl_init</processor><port>yourprojectname</port></sink><source type="dataflow"><port>yourprojectname</port></source></datalink><datalink><sink type="processor"><processor>mImgtbl_call</processor><port>yourprojectname</port></sink><source type="dataflow"><port>yourprojectname</port></source></datalink><datalink><sink type="processor"><processor>mImgtbl_call</processor><port>port</port></sink><source type="dataflow"><port>port</port></source></datalink><datalink><sink type="processor"><processor>mImgtbl_call</processor><port>inputBody</port></sink><source type="dataflow"><port>call_parameters</port></source></datalink><datalink><sink type="processor"><processor>check_status</processor><port>port</port></sink><source type="dataflow"><port>port</port></source></datalink><datalink><sink type="processor"><processor>check_status</processor><port>yourprojectname</port></sink><source type="dataflow"><port>yourprojectname</port></source></datalink><datalink><sink type="processor"><processor>XPath_all</processor><port>xml_text</port></sink><source type="processor"><processor>check_status</processor><port>responseBody</port></source></datalink><datalink><sink type="processor"><processor>XPath_images_tbl</processor><port>xml_text</port></sink><source type="processor"><processor>check_status</processor><port>responseBody</port></source></datalink><datalink><sink type="processor"><processor>XPath_error_log</processor><port>xml_text</port></sink><source type="processor"><processor>check_status</processor><port>responseBody</port></source></datalink><datalink><sink type="dataflow"><port>execution_status</port></sink><source type="processor"><processor>check_status</processor><port>execution_status</port></source></datalink><datalink><sink type="dataflow"><port>all</port></sink><source type="processor"><processor>XPath_all</processor><port>nodelist</port></source></datalink><datalink><sink type="dataflow"><port>error_log</port></sink><source type="processor"><processor>XPath_error_log</processor><port>firstNode</port></source></datalink><datalink><sink type="dataflow"><port>images_tbl</port></sink><source type="processor"><processor>XPath_images_tbl</processor><port>firstNode</port></source></datalink></datalinks><annotations><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>921f0555-f457-4ae0-91a7-11dcf8f6fc43</identification>
+      </annotationBean>
+      <date>2019-05-15 12:23:08.849 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>846bfc00-1354-4cea-99f5-04a8ce8f1233</identification>
+      </annotationBean>
+      <date>2019-05-15 12:05:08.812 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>3c9e10b0-9ab4-4d10-95c5-bbf659c71890</identification>
+      </annotationBean>
+      <date>2019-05-15 12:24:55.826 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>8cb8d87a-ccbd-4f39-a59d-e844e83475cf</identification>
+      </annotationBean>
+      <date>2019-05-15 12:27:40.165 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>12c002f7-3d64-4263-b7de-dfba76c0184a</identification>
+      </annotationBean>
+      <date>2019-05-15 12:29:18.570 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>8a2b1bd6-1bce-4014-b6bc-67ddd9c7cc35</identification>
+      </annotationBean>
+      <date>2019-05-15 12:25:35.669 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>aaa12406-7242-4ef2-8436-e4b3c39928f3</identification>
+      </annotationBean>
+      <date>2019-05-15 13:35:07.990 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>80f76124-9ca6-46cc-a238-efd1d7e3ce87</identification>
+      </annotationBean>
+      <date>2019-05-15 14:06:36.396 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>9efe185c-2cf9-492e-9c4d-a97da73d2383</identification>
+      </annotationBean>
+      <date>2019-05-15 12:27:23.478 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>c713dc03-5662-4d76-8b35-7e5ee99fdc09</identification>
+      </annotationBean>
+      <date>2019-05-15 13:57:51.465 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>bb0d5637-7153-4340-b4df-c1e11a0b48b2</identification>
+      </annotationBean>
+      <date>2019-05-15 14:08:23.444 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>6e71691f-1c30-429d-befa-82e9b8e1f06c</identification>
+      </annotationBean>
+      <date>2019-05-15 13:57:09.737 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>1d33374e-0888-48ed-9c39-32f6971e2bdb</identification>
+      </annotationBean>
+      <date>2019-05-15 12:27:05.788 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>4fa09f6f-84bb-4902-9688-56376c9315ec</identification>
+      </annotationBean>
+      <date>2019-05-15 12:09:27.874 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>f2ed044e-a069-4edb-9c26-2ebe7e8ba4d9</identification>
+      </annotationBean>
+      <date>2019-05-15 13:43:27.638 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>ceac7f3d-9031-4381-a4d9-fea7e637129a</identification>
+      </annotationBean>
+      <date>2019-05-15 14:30:41.448 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>b5666454-e276-492c-aaf4-fb9f1170d5a5</identification>
+      </annotationBean>
+      <date>2019-05-15 13:16:49.819 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>88fd1d4c-84b3-4019-b7a9-55d6132d8f9b</identification>
+      </annotationBean>
+      <date>2019-05-15 13:59:16.924 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>4e8be271-d57a-40d5-a6e0-22ff77436287</identification>
+      </annotationBean>
+      <date>2019-05-15 14:19:26.887 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>514ae707-d8ac-4322-a74b-2ac311368ea8</identification>
+      </annotationBean>
+      <date>2019-05-15 13:50:09.137 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>021abd0e-ed63-49cf-871d-b9f40059c8f4</identification>
+      </annotationBean>
+      <date>2019-05-15 14:26:29.576 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>c2e25ba4-b9a1-46dd-9339-ccf4e970e039</identification>
+      </annotationBean>
+      <date>2019-05-15 14:31:49.419 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>fffd7afa-5b2e-4072-8e60-315c76e66e5b</identification>
+      </annotationBean>
+      <date>2019-05-15 14:32:56.697 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>2e73e7c1-aa38-4385-85c4-3286a766b5bd</identification>
+      </annotationBean>
+      <date>2019-05-15 14:31:19.651 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>285fc59b-7ea1-4437-ba0a-3db59ad25bbe</identification>
+      </annotationBean>
+      <date>2019-05-15 14:06:48.117 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>4f6b40b7-91ed-4d4f-bc3d-a469733750da</identification>
+      </annotationBean>
+      <date>2019-05-15 14:33:13.544 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>f09d5b3b-9e87-4e93-94bf-d3b1d5135021</identification>
+      </annotationBean>
+      <date>2019-05-15 13:51:13.6 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>7e964f4e-6159-4b52-9a29-74a10ffac906</identification>
+      </annotationBean>
+      <date>2019-05-15 14:08:36.695 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>59135d99-0f99-4c3b-a01b-2ee37c857df4</identification>
+      </annotationBean>
+      <date>2019-05-15 12:22:13.293 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>9ef3c8d0-5898-4b28-91e9-5993658ce84e</identification>
+      </annotationBean>
+      <date>2019-05-15 13:38:24.409 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>483a64d0-fa3f-482b-9d9a-84449ca505d9</identification>
+      </annotationBean>
+      <date>2019-05-15 13:57:03.11 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>7ebe3206-0ff6-4e2c-b8d7-a39553a8b9b6</identification>
+      </annotationBean>
+      <date>2019-05-15 14:06:19.813 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>dee8d55d-d553-4290-ba1a-02c30f204697</identification>
+      </annotationBean>
+      <date>2019-05-15 12:20:46.855 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>83d78730-32ed-49c8-bef3-b0ffe9b0fe0e</identification>
+      </annotationBean>
+      <date>2019-05-15 14:09:01.609 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>1b72d655-bfc7-40d8-999f-e710bbf69bb0</identification>
+      </annotationBean>
+      <date>2019-05-15 12:11:19.572 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>1921399c-1401-4af4-8664-8fe86ea1708b</identification>
+      </annotationBean>
+      <date>2019-05-15 14:02:20.794 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>0465ab59-2def-4a38-9dc3-4eb93002d0ab</identification>
+      </annotationBean>
+      <date>2019-05-15 13:38:29.126 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>5966bcbd-a338-4bff-b362-042e783faec8</identification>
+      </annotationBean>
+      <date>2019-05-15 13:37:35.236 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>2f1a4c6b-2d37-4400-9476-8f484c941706</identification>
+      </annotationBean>
+      <date>2019-05-15 14:05:11.908 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>f513ad97-2188-488a-9918-05472abb4247</identification>
+      </annotationBean>
+      <date>2019-05-15 14:34:02.196 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>cfbf9b98-622a-42b7-acd9-62bcb8838687</identification>
+      </annotationBean>
+      <date>2019-05-15 13:44:34.532 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>348e269b-726a-4a33-9c51-9ddf13fb350b</identification>
+      </annotationBean>
+      <date>2019-05-15 14:32:25.736 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>5a774c62-9564-4469-8869-77c1ca51875f</identification>
+      </annotationBean>
+      <date>2019-05-15 12:06:19.63 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>cb07eb44-2fa3-454e-8912-5e343b39b55c</identification>
+      </annotationBean>
+      <date>2019-05-15 12:12:08.610 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>e887911f-cd2c-48c3-9dce-03476f677bf6</identification>
+      </annotationBean>
+      <date>2019-05-15 14:32:11.763 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>19029f88-003a-405e-ab55-f90462a840a5</identification>
+      </annotationBean>
+      <date>2019-05-15 12:22:01.415 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>b90a0d90-7dd7-4442-b5b0-f92d6ec728ce</identification>
+      </annotationBean>
+      <date>2019-05-15 12:05:13.705 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>f69afb87-b303-4f04-ae1d-4deab2543cfc</identification>
+      </annotationBean>
+      <date>2019-05-15 13:37:05.83 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>011392a7-4531-466a-80a7-3d445b0ec64e</identification>
+      </annotationBean>
+      <date>2019-05-15 14:01:08.743 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>84453a4b-2d1d-4806-bd1c-9853572aefcc</identification>
+      </annotationBean>
+      <date>2019-05-15 13:57:27.675 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>cc3d50b7-8cf1-446e-81b8-9fb105692e89</identification>
+      </annotationBean>
+      <date>2019-05-15 13:51:56.534 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>fc516756-a500-45cb-996e-aee62fce972d</identification>
+      </annotationBean>
+      <date>2019-05-15 13:59:59.351 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>111fc2aa-836c-4e79-8646-923c9e18326b</identification>
+      </annotationBean>
+      <date>2019-05-15 14:11:10.676 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2></annotations></dataflow><dataflow id="575de19b-f366-40b5-8d40-62b1c713f0ad" role="nested"><name>Workflow74</name><inputPorts><port><name>port</name><depth>0</depth><granularDepth>0</granularDepth><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.ExampleValue">
+        <text>8082</text>
+      </annotationBean>
+      <date>2019-05-14 17:06:31.606 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>yourprojectname</name><depth>0</depth><granularDepth>0</granularDepth><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.ExampleValue">
+        <text>1</text>
+      </annotationBean>
+      <date>2019-05-14 17:06:36.902 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port></inputPorts><outputPorts><port><name>execution_status</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port><port><name>responseBody</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port><port><name>status</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port></outputPorts><processors><processor><name>XPath_Service</name><inputPorts><port><name>xml_text</name><depth>0</depth></port></inputPorts><outputPorts><port><name>firstNode</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>xpath-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.xpath.XPathActivity</class><inputMap><map from="xml_text" to="xml_text" /></inputMap><outputMap><map from="firstNode" to="firstNode" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean xmlns="">
+  <xmlDocument>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="http://0.0.0.0:8081/static/interface.xsl"?&gt;&lt;clam xmlns:xlink="http://www.w3.org/1999/xlink" version="2.4.4" id="mArchiveExec" name="mArchiveExec" project="1" user="anonymous" baseurl="http://0.0.0.0:8081" accesstoken="82e3cd5bc8b976b34f3031206ceca825" interfaceoptions="" oauth_access_token="" authentication="none"&gt;
+    &lt;description&gt;mArchiveExec: Given a table of archive images (generated by mArchiveList), calls mArchiveGet on each one in sequence to retrieve all the files into the current directory.&lt;/description&gt;
+    &lt;version/&gt;
+    &lt;author/&gt;
+    &lt;email/&gt;
+    &lt;status code="2" message="Done" completion="100" errors="no" errormsg=""&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="100"&gt;Done&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;return_code: 0&lt;/log&gt;
+        &lt;log time="14/May/2019 16:32:29" completion="0"&gt;clamdata['debugg_level']: 0&lt;/log&gt;
+        &lt;log time="14/May/2019 16:32:29" completion="0"&gt;inputfilepath: input/region.tbl&lt;/log&gt;
+        &lt;log time="14/May/2019 16:32:29" completion="0"&gt;Starting...&lt;/log&gt;
+    &lt;/status&gt;
+    &lt;profiles&gt;
+            
+        &lt;profile&gt;
+         &lt;input&gt;
+            &lt;InputTemplate id="region" format="PlainTextFormat" label="Table of archive images, generated by mArchiveList." mimetype="text/plain" extension="tbl" optional="no" unique="no" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+         &lt;/input&gt;
+         &lt;output&gt;
+            &lt;OutputTemplate id="output" format="PlainTextFormat" label="num-images from region.tbl are retrieved into the current directory. num-failed is a count of failed attempts to retrieve images; turn on debugging to see the errors generated by mArchiveGet." mimetype="text/plain" extension="fits" parent="region" unique="no"&gt;
+                &lt;meta id="encoding"&gt;utf-8&lt;/meta&gt;
+            &lt;/OutputTemplate&gt;
+         &lt;/output&gt;
+        &lt;/profile&gt;
+
+    &lt;/profiles&gt;
+    &lt;parameters&gt;
+        &lt;parametergroup name="Switches"&gt;
+                    &lt;ChoiceParameter id="debugg_level" name="debugg_level" description="Prints out additional debugging information; in this version, the only supported level is 1."&gt; &lt;choice id="0" selected="1"&gt;0&lt;/choice&gt; &lt;choice id="1"&gt;1&lt;/choice&gt;&lt;/ChoiceParameter&gt;
+        &lt;/parametergroup&gt;
+    &lt;/parameters&gt;
+    &lt;program matchedprofiles="0"&gt;
+        &lt;outputfile name="region.tbl.fits" template="output" xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/region.tbl.fits"&gt;
+                &lt;inputfile name="region.tbl" template="region" xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/input/region.tbl"/&gt;
+        &lt;/outputfile&gt;
+    &lt;/program&gt;
+    &lt;output&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/error.log"&gt;
+                &lt;name&gt;error.log&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+    &lt;/output&gt;
+    &lt;inputsources&gt;
+    &lt;/inputsources&gt;
+    &lt;input&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/input/region.tbl" template="region"&gt;
+            &lt;name&gt;region.tbl&lt;/name&gt;
+        &lt;/file&gt;
+    &lt;/input&gt;
+&lt;/clam&gt;</xmlDocument>
+  <xpathExpression>/clam/status/@code</xpathExpression>
+  <xpathNamespaceMap>
+    <entry>
+      <string>xlink</string>
+      <string>http://www.w3.org/1999/xlink</string>
+    </entry>
+  </xpathNamespaceMap>
+</net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Loop</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.LoopConfiguration xmlns="">
+  <properties />
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.LoopConfiguration></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="xml_text" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>clam_status</name><inputPorts><port><name>yourprojectname</name><depth>0</depth></port><port><name>port</name><depth>0</depth></port></inputPorts><outputPorts><port><name>responseBody</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>status</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>rest-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.rest.RESTActivity</class><inputMap><map from="port" to="port" /><map from="yourprojectname" to="yourprojectname" /></inputMap><outputMap><map from="status" to="status" /><map from="responseBody" to="responseBody" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.rest.RESTActivityConfigurationBean xmlns="">
+  <httpMethod>GET</httpMethod>
+  <urlSignature>http://0.0.0.0:{port}/{yourprojectname}/</urlSignature>
+  <acceptsHeaderValue>application/xml</acceptsHeaderValue>
+  <contentTypeForUpdates>application/xml</contentTypeForUpdates>
+  <outgoingDataFormat>String</outgoingDataFormat>
+  <sendHTTPExpectRequestHeader>false</sendHTTPExpectRequestHeader>
+  <showRedirectionOutputPort>false</showRedirectionOutputPort>
+  <showActualUrlPort>false</showActualUrlPort>
+  <showResponseHeadersPort>false</showResponseHeadersPort>
+  <escapeParameters>true</escapeParameters>
+  <otherHTTPHeaders />
+  <activityInputs>
+    <entry>
+      <string>port</string>
+      <java-class>java.lang.String</java-class>
+    </entry>
+    <entry>
+      <string>yourprojectname</string>
+      <java-class>java.lang.String</java-class>
+    </entry>
+  </activityInputs>
+</net.sf.taverna.t2.activities.rest.RESTActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="yourprojectname" depth="0" /><port name="port" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor></processors><conditions /><datalinks><datalink><sink type="processor"><processor>XPath_Service</processor><port>xml_text</port></sink><source type="processor"><processor>clam_status</processor><port>responseBody</port></source></datalink><datalink><sink type="processor"><processor>clam_status</processor><port>yourprojectname</port></sink><source type="dataflow"><port>yourprojectname</port></source></datalink><datalink><sink type="processor"><processor>clam_status</processor><port>port</port></sink><source type="dataflow"><port>port</port></source></datalink><datalink><sink type="dataflow"><port>execution_status</port></sink><source type="processor"><processor>XPath_Service</processor><port>firstNode</port></source></datalink><datalink><sink type="dataflow"><port>responseBody</port></sink><source type="processor"><processor>clam_status</processor><port>responseBody</port></source></datalink><datalink><sink type="dataflow"><port>status</port></sink><source type="processor"><processor>clam_status</processor><port>status</port></source></datalink></datalinks><annotations><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>48986f84-ab52-4539-a027-668219fc3465</identification>
+      </annotationBean>
+      <date>2019-05-14 17:08:35.804 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>3de4f492-571b-48d9-bb0a-402a7e10c9fc</identification>
+      </annotationBean>
+      <date>2019-05-14 17:09:35.460 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>5b711046-d873-4c81-860d-fe6ab212f7cd</identification>
+      </annotationBean>
+      <date>2019-05-14 17:10:02.847 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>575de19b-f366-40b5-8d40-62b1c713f0ad</identification>
+      </annotationBean>
+      <date>2019-05-14 17:11:15.659 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>2992840a-766f-427c-9507-af3935809dcd</identification>
+      </annotationBean>
+      <date>2019-05-14 16:46:34.904 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>6b2c1a7d-dd9e-4c26-9bcc-ca403a84330b</identification>
+      </annotationBean>
+      <date>2019-05-14 17:10:08.720 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>cdd71255-cb52-4930-b0d0-bb05c03fe05f</identification>
+      </annotationBean>
+      <date>2019-05-14 16:52:36.456 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>2a4d4b62-aa46-45da-a214-fc1300f4cd53</identification>
+      </annotationBean>
+      <date>2019-05-14 17:10:27.308 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>4b00011f-2d10-4361-8b21-628c9427575c</identification>
+      </annotationBean>
+      <date>2019-05-14 16:52:28.745 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>6df1efe8-f9b0-46ff-9fe1-c950800b7260</identification>
+      </annotationBean>
+      <date>2019-05-14 17:07:15.12 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>8211860e-b799-49a9-9a57-b0266e56f30f</identification>
+      </annotationBean>
+      <date>2019-05-14 16:56:56.65 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>5dd91c89-7925-4e98-bf11-fc26c56c7d7c</identification>
+      </annotationBean>
+      <date>2019-05-14 17:10:28.582 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>425c8969-955a-4d82-a50c-64652875131b</identification>
+      </annotationBean>
+      <date>2019-05-14 16:45:20.408 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>403d2dc3-d155-495e-95b7-16e802d413d5</identification>
+      </annotationBean>
+      <date>2019-05-14 16:56:48.438 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>034d875e-163f-400a-aef7-995e01ca89b8</identification>
+      </annotationBean>
+      <date>2019-05-14 17:06:37.279 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2></annotations></dataflow></workflow>

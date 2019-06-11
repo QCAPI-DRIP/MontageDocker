@@ -1,0 +1,2008 @@
+<workflow xmlns="http://taverna.sf.net/2008/xml/t2flow" version="1" producedBy="taverna-core-2.5.0"><dataflow id="8d9760f7-c2b8-4e42-8df7-debf92c0f48c" role="top"><name>Workflow38</name><inputPorts><port><name>port</name><depth>0</depth><granularDepth>0</granularDepth><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.ExampleValue">
+        <text>8085</text>
+      </annotationBean>
+      <date>2019-05-15 15:26:14.94 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>yourprojectname</name><depth>0</depth><granularDepth>0</granularDepth><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.ExampleValue">
+        <text>DSS2R</text>
+      </annotationBean>
+      <date>2019-05-15 15:26:37.445 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port></inputPorts><outputPorts><port><name>execution_status</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port><port><name>fits_list</name><lastPredictedDepth>1</lastPredictedDepth><annotations /></port><port><name>error</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port><port><name>nodelist</name><lastPredictedDepth>1</lastPredictedDepth><annotations /></port></outputPorts><processors><processor><name>mProjExec_call</name><inputPorts><port><name>port</name><depth>0</depth></port><port><name>yourprojectname</name><depth>0</depth></port><port><name>inputBody</name><depth>0</depth></port></inputPorts><outputPorts /><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>rest-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.rest.RESTActivity</class><inputMap><map from="port" to="port" /><map from="inputBody" to="inputBody" /><map from="yourprojectname" to="yourprojectname" /></inputMap><outputMap /><configBean encoding="xstream"><net.sf.taverna.t2.activities.rest.RESTActivityConfigurationBean xmlns="">
+  <httpMethod>POST</httpMethod>
+  <urlSignature>http://0.0.0.0:{port}/{yourprojectname}/</urlSignature>
+  <acceptsHeaderValue>application/xml</acceptsHeaderValue>
+  <contentTypeForUpdates>application/xml</contentTypeForUpdates>
+  <outgoingDataFormat>String</outgoingDataFormat>
+  <sendHTTPExpectRequestHeader>false</sendHTTPExpectRequestHeader>
+  <showRedirectionOutputPort>false</showRedirectionOutputPort>
+  <showActualUrlPort>false</showActualUrlPort>
+  <showResponseHeadersPort>false</showResponseHeadersPort>
+  <escapeParameters>true</escapeParameters>
+  <otherHTTPHeaders />
+  <activityInputs>
+    <entry>
+      <string>port</string>
+      <java-class>java.lang.String</java-class>
+    </entry>
+    <entry>
+      <string>yourprojectname</string>
+      <java-class>java.lang.String</java-class>
+    </entry>
+  </activityInputs>
+</net.sf.taverna.t2.activities.rest.RESTActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="port" depth="0" /><port name="yourprojectname" depth="0" /><port name="inputBody" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>inputBody_value</name><inputPorts /><outputPorts><port><name>value</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>stringconstant-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.stringconstant.StringConstantActivity</class><inputMap /><outputMap><map from="value" to="value" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.stringconstant.StringConstantConfigurationBean xmlns="">
+  <value>q=false&amp;d=fale&amp;e=false&amp;X=false&amp;b=false&amp;r=false&amp;x=false</value>
+</net.sf.taverna.t2.activities.stringconstant.StringConstantConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy /></iteration></iterationStrategyStack></processor><processor><name>Nested_workflow</name><inputPorts><port><name>port</name><depth>0</depth></port><port><name>yourprojectname</name><depth>0</depth></port></inputPorts><outputPorts><port><name>execution_status</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>responseBody</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>dataflow-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.dataflow.DataflowActivity</class><inputMap><map from="port" to="port" /><map from="yourprojectname" to="yourprojectname" /></inputMap><outputMap><map from="responseBody" to="responseBody" /><map from="execution_status" to="execution_status" /></outputMap><configBean encoding="dataflow"><dataflow ref="575de19b-f366-40b5-8d40-62b1c713f0ad" /></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Loop</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.LoopConfiguration xmlns="">
+  <conditionXML>&lt;activity xmlns="http://taverna.sf.net/2008/xml/t2flow"&gt;&lt;raven&gt;&lt;group&gt;net.sf.taverna.t2.activities&lt;/group&gt;&lt;artifact&gt;beanshell-activity&lt;/artifact&gt;&lt;version&gt;1.5&lt;/version&gt;&lt;/raven&gt;&lt;class&gt;net.sf.taverna.t2.activities.beanshell.BeanshellActivity&lt;/class&gt;&lt;inputMap /&gt;&lt;outputMap /&gt;&lt;configBean encoding="xstream"&gt;&lt;net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean xmlns=""&gt;&#xD;
+  &lt;inputs&gt;&#xD;
+    &lt;net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean&gt;&#xD;
+      &lt;name&gt;execution_status&lt;/name&gt;&#xD;
+      &lt;depth&gt;0&lt;/depth&gt;&#xD;
+      &lt;translatedElementType&gt;java.lang.String&lt;/translatedElementType&gt;&#xD;
+      &lt;allowsLiteralValues&gt;true&lt;/allowsLiteralValues&gt;&#xD;
+    &lt;/net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean&gt;&#xD;
+  &lt;/inputs&gt;&#xD;
+  &lt;outputs&gt;&#xD;
+    &lt;net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean&gt;&#xD;
+      &lt;name&gt;loop&lt;/name&gt;&#xD;
+      &lt;depth&gt;0&lt;/depth&gt;&#xD;
+      &lt;granularDepth&gt;0&lt;/granularDepth&gt;&#xD;
+    &lt;/net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean&gt;&#xD;
+  &lt;/outputs&gt;&#xD;
+  &lt;classLoaderSharing&gt;workflow&lt;/classLoaderSharing&gt;&#xD;
+  &lt;localDependencies /&gt;&#xD;
+  &lt;artifactDependencies /&gt;&#xD;
+  &lt;script&gt;loop = "" + ! execution_status.equals("2"); &#xD;
+if ("true".matches(loop)) {&#xD;
+   Thread.sleep(2000);&#xD;
+}&lt;/script&gt;&#xD;
+  &lt;dependencies /&gt;&#xD;
+&lt;/net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean&gt;&lt;/configBean&gt;&lt;annotations /&gt;&lt;/activity&gt;</conditionXML>
+  <runFirst>true</runFirst>
+  <properties>
+    <property name="compareValue" value="2" />
+    <property name="delay" value="2" />
+    <property name="comparePort" value="execution_status" />
+    <property name="isFeedBack" value="false" />
+    <property name="comparison" value="EqualTo" />
+  </properties>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.LoopConfiguration></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="port" depth="0" /><port name="yourprojectname" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>XPath_fits</name><inputPorts><port><name>xml_text</name><depth>0</depth></port></inputPorts><outputPorts><port><name>nodelist</name><depth>1</depth><granularDepth>1</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>xpath-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.xpath.XPathActivity</class><inputMap><map from="xml_text" to="xml_text" /></inputMap><outputMap><map from="nodelist" to="nodelist" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean xmlns="">
+  <xmlDocument>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="http://0.0.0.0:8085/static/interface.xsl"?&gt;&lt;clam xmlns:xlink="http://www.w3.org/1999/xlink" version="2.4.4" id="mProjExec" name="mProjExec" project="DSS2R" user="anonymous" baseurl="http://0.0.0.0:8085" accesstoken="3dcaf54b6c0557c9c52d316497191045" interfaceoptions="" oauth_access_token="" authentication="none"&gt;
+    &lt;description&gt;mProjExec: An executive which runs mProject (or, if possible for the input/output projections, mProjectPP) for each image in an image metadata table. In the case of data cubes, mProjectCube will be used.&lt;/description&gt;
+    &lt;version/&gt;
+    &lt;author/&gt;
+    &lt;email/&gt;
+    &lt;status code="2" message="Done" completion="100" errors="no" errormsg=""&gt;
+        &lt;log time="15/May/2019 15:30:17" completion="100"&gt;Done&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;images_tbl_path: input/images.tbl&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;header_template_path: input/pleiades.hdr&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Starting...&lt;/log&gt;
+    &lt;/status&gt;
+    &lt;profiles&gt;
+            
+        &lt;profile&gt;
+         &lt;input&gt;
+            &lt;InputTemplate id="directory" format="PlainTextFormat" label="input FITS files" mimetype="text/plain" extension="fits" optional="no" unique="no" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+            &lt;InputTemplate id="images" format="PlainTextFormat" label="ASCII table (generated by mImgtbl) containing metadata for all images to be reprojected." mimetype="text/plain" extension="tbl" optional="no" unique="yes" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+            &lt;InputTemplate id="template" format="PlainTextFormat" label="FITS header template to be used in generation of output FITS." mimetype="text/plain" extension="hdr" optional="no" unique="yes" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+         &lt;/input&gt;
+         &lt;output&gt;
+            &lt;OutputTemplate id="stats" format="PlainTextFormat" label="Name of table for output statistics (time of each reprojection, or error messages)." mimetype="text/plain" filename="stats.tbl" parent="images" unique="yes"&gt;
+                &lt;meta id="encoding"&gt;utf-8&lt;/meta&gt;
+            &lt;/OutputTemplate&gt;
+         &lt;/output&gt;
+        &lt;/profile&gt;
+
+    &lt;/profiles&gt;
+    &lt;parameters&gt;
+        &lt;parametergroup name="Switches"&gt;
+                    &lt;BooleanParameter id="q" name="q" description="Use mProjectQL for reprojections. Much faster but not quite flux-conserving."/&gt;
+                    &lt;BooleanParameter id="d" name="d" description="Turns on debugging"/&gt;
+                    &lt;BooleanParameter id="e" name="e" description="Flag indicating output image should exactly match the FITS header template, and not crop off blank pixels"/&gt;
+                    &lt;BooleanParameter id="X" name="X" description="Force reprojection of whole images, even if they exceed the area of the FITS header template"/&gt;
+                    &lt;StringParameter id="b" name="b" description="Ignore border width of pixels around edge of images"/&gt;
+                    &lt;StringParameter id="r" name="r" description="Allows restart at record number restartrec, if mProjExec exits upon an error"/&gt;
+                    &lt;StringParameter id="x" name="x" description="Turn on flux rescaling (e.g. magnitude zero point correction): scaleColumn is the name of a column in images.tbl which contains scale information."/&gt;
+        &lt;/parametergroup&gt;
+    &lt;/parameters&gt;
+    &lt;program matchedprofiles="0"&gt;
+        &lt;outputfile name="stats.tbl" template="stats" xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/stats.tbl"&gt;
+                &lt;inputfile name="images.tbl" template="images" xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images.tbl"/&gt;
+        &lt;/outputfile&gt;
+    &lt;/program&gt;
+    &lt;output&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/error.log"&gt;
+                &lt;name&gt;error.log&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+    &lt;/output&gt;
+    &lt;inputsources&gt;
+    &lt;/inputsources&gt;
+    &lt;input&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/pleiades.hdr" template="template"&gt;
+            &lt;name&gt;pleiades.hdr&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images.tbl" template="images"&gt;
+            &lt;name&gt;images.tbl&lt;/name&gt;
+        &lt;/file&gt;
+    &lt;/input&gt;
+&lt;/clam&gt;</xmlDocument>
+  <xpathExpression>/clam/output/file[ends-with(@xlink:href, '.fits')]/@xlink:href</xpathExpression>
+  <xpathNamespaceMap>
+    <entry>
+      <string>xlink</string>
+      <string>http://www.w3.org/1999/xlink</string>
+    </entry>
+  </xpathNamespaceMap>
+</net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="xml_text" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>XPath_error_log</name><inputPorts><port><name>xml_text</name><depth>0</depth></port></inputPorts><outputPorts /><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>xpath-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.xpath.XPathActivity</class><inputMap><map from="xml_text" to="xml_text" /></inputMap><outputMap /><configBean encoding="xstream"><net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean xmlns="">
+  <xmlDocument>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="http://0.0.0.0:8085/static/interface.xsl"?&gt;&lt;clam xmlns:xlink="http://www.w3.org/1999/xlink" version="2.4.4" id="mProjExec" name="mProjExec" project="DSS2R" user="anonymous" baseurl="http://0.0.0.0:8085" accesstoken="3dcaf54b6c0557c9c52d316497191045" interfaceoptions="" oauth_access_token="" authentication="none"&gt;
+    &lt;description&gt;mProjExec: An executive which runs mProject (or, if possible for the input/output projections, mProjectPP) for each image in an image metadata table. In the case of data cubes, mProjectCube will be used.&lt;/description&gt;
+    &lt;version/&gt;
+    &lt;author/&gt;
+    &lt;email/&gt;
+    &lt;status code="2" message="Done" completion="100" errors="no" errormsg=""&gt;
+        &lt;log time="15/May/2019 15:30:17" completion="100"&gt;Done&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;images_tbl_path: input/images.tbl&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;header_template_path: input/pleiades.hdr&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Starting...&lt;/log&gt;
+    &lt;/status&gt;
+    &lt;profiles&gt;
+            
+        &lt;profile&gt;
+         &lt;input&gt;
+            &lt;InputTemplate id="directory" format="PlainTextFormat" label="input FITS files" mimetype="text/plain" extension="fits" optional="no" unique="no" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+            &lt;InputTemplate id="images" format="PlainTextFormat" label="ASCII table (generated by mImgtbl) containing metadata for all images to be reprojected." mimetype="text/plain" extension="tbl" optional="no" unique="yes" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+            &lt;InputTemplate id="template" format="PlainTextFormat" label="FITS header template to be used in generation of output FITS." mimetype="text/plain" extension="hdr" optional="no" unique="yes" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+         &lt;/input&gt;
+         &lt;output&gt;
+            &lt;OutputTemplate id="stats" format="PlainTextFormat" label="Name of table for output statistics (time of each reprojection, or error messages)." mimetype="text/plain" filename="stats.tbl" parent="images" unique="yes"&gt;
+                &lt;meta id="encoding"&gt;utf-8&lt;/meta&gt;
+            &lt;/OutputTemplate&gt;
+         &lt;/output&gt;
+        &lt;/profile&gt;
+
+    &lt;/profiles&gt;
+    &lt;parameters&gt;
+        &lt;parametergroup name="Switches"&gt;
+                    &lt;BooleanParameter id="q" name="q" description="Use mProjectQL for reprojections. Much faster but not quite flux-conserving."/&gt;
+                    &lt;BooleanParameter id="d" name="d" description="Turns on debugging"/&gt;
+                    &lt;BooleanParameter id="e" name="e" description="Flag indicating output image should exactly match the FITS header template, and not crop off blank pixels"/&gt;
+                    &lt;BooleanParameter id="X" name="X" description="Force reprojection of whole images, even if they exceed the area of the FITS header template"/&gt;
+                    &lt;StringParameter id="b" name="b" description="Ignore border width of pixels around edge of images"/&gt;
+                    &lt;StringParameter id="r" name="r" description="Allows restart at record number restartrec, if mProjExec exits upon an error"/&gt;
+                    &lt;StringParameter id="x" name="x" description="Turn on flux rescaling (e.g. magnitude zero point correction): scaleColumn is the name of a column in images.tbl which contains scale information."/&gt;
+        &lt;/parametergroup&gt;
+    &lt;/parameters&gt;
+    &lt;program matchedprofiles="0"&gt;
+        &lt;outputfile name="stats.tbl" template="stats" xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/stats.tbl"&gt;
+                &lt;inputfile name="images.tbl" template="images" xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images.tbl"/&gt;
+        &lt;/outputfile&gt;
+    &lt;/program&gt;
+    &lt;output&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/error.log"&gt;
+                &lt;name&gt;error.log&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+    &lt;/output&gt;
+    &lt;inputsources&gt;
+    &lt;/inputsources&gt;
+    &lt;input&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/pleiades.hdr" template="template"&gt;
+            &lt;name&gt;pleiades.hdr&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images.tbl" template="images"&gt;
+            &lt;name&gt;images.tbl&lt;/name&gt;
+        &lt;/file&gt;
+    &lt;/input&gt;
+&lt;/clam&gt;</xmlDocument>
+  <xpathExpression>/clam/output/file[ends-with(@xlink:href, '.log')]/@xlink:href</xpathExpression>
+  <xpathNamespaceMap>
+    <entry>
+      <string>xlink</string>
+      <string>http://www.w3.org/1999/xlink</string>
+    </entry>
+  </xpathNamespaceMap>
+</net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="xml_text" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>XPath_all</name><inputPorts><port><name>xml_text</name><depth>0</depth></port></inputPorts><outputPorts><port><name>firstNode</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>nodelist</name><depth>1</depth><granularDepth>1</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>xpath-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.xpath.XPathActivity</class><inputMap><map from="xml_text" to="xml_text" /></inputMap><outputMap><map from="nodelist" to="nodelist" /><map from="firstNode" to="firstNode" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean xmlns="">
+  <xmlDocument>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="http://0.0.0.0:8085/static/interface.xsl"?&gt;&lt;clam xmlns:xlink="http://www.w3.org/1999/xlink" version="2.4.4" id="mProjExec" name="mProjExec" project="DSS2R" user="anonymous" baseurl="http://0.0.0.0:8085" accesstoken="3dcaf54b6c0557c9c52d316497191045" interfaceoptions="" oauth_access_token="" authentication="none"&gt;
+    &lt;description&gt;mProjExec: An executive which runs mProject (or, if possible for the input/output projections, mProjectPP) for each image in an image metadata table. In the case of data cubes, mProjectCube will be used.&lt;/description&gt;
+    &lt;version/&gt;
+    &lt;author/&gt;
+    &lt;email/&gt;
+    &lt;status code="2" message="Done" completion="100" errors="no" errormsg=""&gt;
+        &lt;log time="15/May/2019 15:30:17" completion="100"&gt;Done&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;images_tbl_path: input/images.tbl&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_003_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_003.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_006_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_006.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;header_template_path: input/pleiades.hdr&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_004_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_002_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_001_005.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_001.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_002.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Moved: input/poss2ukstu_red_005_004.fits&lt;/log&gt;
+        &lt;log time="15/May/2019 15:28:28" completion="0"&gt;Starting...&lt;/log&gt;
+    &lt;/status&gt;
+    &lt;profiles&gt;
+            
+        &lt;profile&gt;
+         &lt;input&gt;
+            &lt;InputTemplate id="directory" format="PlainTextFormat" label="input FITS files" mimetype="text/plain" extension="fits" optional="no" unique="no" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+            &lt;InputTemplate id="images" format="PlainTextFormat" label="ASCII table (generated by mImgtbl) containing metadata for all images to be reprojected." mimetype="text/plain" extension="tbl" optional="no" unique="yes" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+            &lt;InputTemplate id="template" format="PlainTextFormat" label="FITS header template to be used in generation of output FITS." mimetype="text/plain" extension="hdr" optional="no" unique="yes" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+         &lt;/input&gt;
+         &lt;output&gt;
+            &lt;OutputTemplate id="stats" format="PlainTextFormat" label="Name of table for output statistics (time of each reprojection, or error messages)." mimetype="text/plain" filename="stats.tbl" parent="images" unique="yes"&gt;
+                &lt;meta id="encoding"&gt;utf-8&lt;/meta&gt;
+            &lt;/OutputTemplate&gt;
+         &lt;/output&gt;
+        &lt;/profile&gt;
+
+    &lt;/profiles&gt;
+    &lt;parameters&gt;
+        &lt;parametergroup name="Switches"&gt;
+                    &lt;BooleanParameter id="q" name="q" description="Use mProjectQL for reprojections. Much faster but not quite flux-conserving."/&gt;
+                    &lt;BooleanParameter id="d" name="d" description="Turns on debugging"/&gt;
+                    &lt;BooleanParameter id="e" name="e" description="Flag indicating output image should exactly match the FITS header template, and not crop off blank pixels"/&gt;
+                    &lt;BooleanParameter id="X" name="X" description="Force reprojection of whole images, even if they exceed the area of the FITS header template"/&gt;
+                    &lt;StringParameter id="b" name="b" description="Ignore border width of pixels around edge of images"/&gt;
+                    &lt;StringParameter id="r" name="r" description="Allows restart at record number restartrec, if mProjExec exits upon an error"/&gt;
+                    &lt;StringParameter id="x" name="x" description="Turn on flux rescaling (e.g. magnitude zero point correction): scaleColumn is the name of a column in images.tbl which contains scale information."/&gt;
+        &lt;/parametergroup&gt;
+    &lt;/parameters&gt;
+    &lt;program matchedprofiles="0"&gt;
+        &lt;outputfile name="stats.tbl" template="stats" xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/stats.tbl"&gt;
+                &lt;inputfile name="images.tbl" template="images" xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images.tbl"/&gt;
+        &lt;/outputfile&gt;
+    &lt;/program&gt;
+    &lt;output&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/error.log"&gt;
+                &lt;name&gt;error.log&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_004_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_004_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_002_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_002_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_005_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_005_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_004_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_004_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_003_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_003_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_005.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_005.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_001_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_001_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_002.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_002.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_002_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_002_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_006.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_006.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_001_001.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_001_001.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_006_006_area.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_006_006_area.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_003_003.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_003_003.fits&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/output/images/hdu0_poss2ukstu_red_005_004.fits"&gt;
+                &lt;name&gt;images/hdu0_poss2ukstu_red_005_004.fits&lt;/name&gt;
+            &lt;/file&gt;
+    &lt;/output&gt;
+    &lt;inputsources&gt;
+    &lt;/inputsources&gt;
+    &lt;input&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/pleiades.hdr" template="template"&gt;
+            &lt;name&gt;pleiades.hdr&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_005_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_005_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_001_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_001_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_005.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_005.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_004_006.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_004_006.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_004.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_004.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_003_001.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_003_001.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_002_002.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_002_002.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images/poss2ukstu_red_006_003.fits"&gt;
+            &lt;name&gt;images/poss2ukstu_red_006_003.fits&lt;/name&gt;
+        &lt;/file&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8085/DSS2R/input/images.tbl" template="images"&gt;
+            &lt;name&gt;images.tbl&lt;/name&gt;
+        &lt;/file&gt;
+    &lt;/input&gt;
+&lt;/clam&gt;</xmlDocument>
+  <xpathExpression>/clam/output/file/@xlink:href</xpathExpression>
+  <xpathNamespaceMap>
+    <entry>
+      <string>xlink</string>
+      <string>http://www.w3.org/1999/xlink</string>
+    </entry>
+  </xpathNamespaceMap>
+</net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="xml_text" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor></processors><conditions><condition control="mProjExec_call" target="Nested_workflow" /></conditions><datalinks><datalink><sink type="processor"><processor>mProjExec_call</processor><port>port</port></sink><source type="dataflow"><port>port</port></source></datalink><datalink><sink type="processor"><processor>mProjExec_call</processor><port>yourprojectname</port></sink><source type="dataflow"><port>yourprojectname</port></source></datalink><datalink><sink type="processor"><processor>mProjExec_call</processor><port>inputBody</port></sink><source type="processor"><processor>inputBody_value</processor><port>value</port></source></datalink><datalink><sink type="processor"><processor>Nested_workflow</processor><port>port</port></sink><source type="dataflow"><port>port</port></source></datalink><datalink><sink type="processor"><processor>Nested_workflow</processor><port>yourprojectname</port></sink><source type="dataflow"><port>yourprojectname</port></source></datalink><datalink><sink type="processor"><processor>XPath_fits</processor><port>xml_text</port></sink><source type="processor"><processor>Nested_workflow</processor><port>responseBody</port></source></datalink><datalink><sink type="processor"><processor>XPath_error_log</processor><port>xml_text</port></sink><source type="processor"><processor>Nested_workflow</processor><port>responseBody</port></source></datalink><datalink><sink type="processor"><processor>XPath_all</processor><port>xml_text</port></sink><source type="processor"><processor>Nested_workflow</processor><port>responseBody</port></source></datalink><datalink><sink type="dataflow"><port>execution_status</port></sink><source type="processor"><processor>Nested_workflow</processor><port>execution_status</port></source></datalink><datalink><sink type="dataflow"><port>fits_list</port></sink><source type="processor"><processor>XPath_fits</processor><port>nodelist</port></source></datalink><datalink><sink type="dataflow"><port>error</port></sink><source type="processor"><processor>XPath_all</processor><port>firstNode</port></source></datalink><datalink><sink type="dataflow"><port>nodelist</port></sink><source type="processor"><processor>XPath_all</processor><port>nodelist</port></source></datalink></datalinks><annotations><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>117ef314-26f9-4365-8354-27e20ea93a25</identification>
+      </annotationBean>
+      <date>2019-05-15 15:31:47.646 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>e34e17f9-a1e7-435d-b499-4961fcfb334a</identification>
+      </annotationBean>
+      <date>2019-05-15 15:35:59.698 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>7a00132e-e1a2-475c-b510-f24225898603</identification>
+      </annotationBean>
+      <date>2019-05-15 15:28:20.950 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>e9bddfe0-319a-4258-9846-5442e3dc2f7a</identification>
+      </annotationBean>
+      <date>2019-05-15 15:32:13.582 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>f41ab851-4387-4354-aec7-1a7ff122ab1b</identification>
+      </annotationBean>
+      <date>2019-05-15 15:36:34.336 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>dffcb19e-ef8e-4eaa-ba3c-1fa218b03b63</identification>
+      </annotationBean>
+      <date>2019-05-15 15:26:37.802 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>82dab285-f5d6-4700-918d-de7f63446a05</identification>
+      </annotationBean>
+      <date>2019-05-15 15:26:14.710 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>4f526e0a-7de6-41da-ab52-41e8a8d6ca57</identification>
+      </annotationBean>
+      <date>2019-05-15 15:29:23.404 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>2a2bf363-0ed8-4746-9322-df93e4d99dec</identification>
+      </annotationBean>
+      <date>2019-05-15 15:38:18.550 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>68291014-0e29-4d00-a7e5-52e068d33d78</identification>
+      </annotationBean>
+      <date>2019-05-15 15:37:27.670 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>d88d426d-0763-4fa0-ac17-f4fb871eae47</identification>
+      </annotationBean>
+      <date>2019-05-15 15:28:10.832 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>afabbe69-eb32-4365-aa20-ee140186f5cd</identification>
+      </annotationBean>
+      <date>2019-05-15 15:29:35.585 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>8d9760f7-c2b8-4e42-8df7-debf92c0f48c</identification>
+      </annotationBean>
+      <date>2019-05-15 15:38:27.340 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>b9ba4448-91f4-4eab-9f09-819efcf148a0</identification>
+      </annotationBean>
+      <date>2019-05-15 15:25:53.382 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2></annotations></dataflow><dataflow id="575de19b-f366-40b5-8d40-62b1c713f0ad" role="nested"><name>Workflow74</name><inputPorts><port><name>port</name><depth>0</depth><granularDepth>0</granularDepth><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.ExampleValue">
+        <text>8082</text>
+      </annotationBean>
+      <date>2019-05-14 17:06:31.606 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>yourprojectname</name><depth>0</depth><granularDepth>0</granularDepth><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.ExampleValue">
+        <text>1</text>
+      </annotationBean>
+      <date>2019-05-14 17:06:36.902 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port></inputPorts><outputPorts><port><name>execution_status</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port><port><name>responseBody</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port><port><name>status</name><lastPredictedDepth>0</lastPredictedDepth><annotations /></port></outputPorts><processors><processor><name>XPath_Service</name><inputPorts><port><name>xml_text</name><depth>0</depth></port></inputPorts><outputPorts><port><name>firstNode</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>xpath-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.xpath.XPathActivity</class><inputMap><map from="xml_text" to="xml_text" /></inputMap><outputMap><map from="firstNode" to="firstNode" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean xmlns="">
+  <xmlDocument>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="http://0.0.0.0:8081/static/interface.xsl"?&gt;&lt;clam xmlns:xlink="http://www.w3.org/1999/xlink" version="2.4.4" id="mArchiveExec" name="mArchiveExec" project="1" user="anonymous" baseurl="http://0.0.0.0:8081" accesstoken="82e3cd5bc8b976b34f3031206ceca825" interfaceoptions="" oauth_access_token="" authentication="none"&gt;
+    &lt;description&gt;mArchiveExec: Given a table of archive images (generated by mArchiveList), calls mArchiveGet on each one in sequence to retrieve all the files into the current directory.&lt;/description&gt;
+    &lt;version/&gt;
+    &lt;author/&gt;
+    &lt;email/&gt;
+    &lt;status code="2" message="Done" completion="100" errors="no" errormsg=""&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="100"&gt;Done&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_005_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_006.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_001_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_006_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_003_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_003.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_005.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_002_001.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_004.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;Moving: /root/mArchiveExec/userdata/projects/anonymous/1/poss2ukstu_blue_004_002.fits.gz&lt;/log&gt;
+        &lt;log time="14/May/2019 16:39:00" completion="0"&gt;return_code: 0&lt;/log&gt;
+        &lt;log time="14/May/2019 16:32:29" completion="0"&gt;clamdata['debugg_level']: 0&lt;/log&gt;
+        &lt;log time="14/May/2019 16:32:29" completion="0"&gt;inputfilepath: input/region.tbl&lt;/log&gt;
+        &lt;log time="14/May/2019 16:32:29" completion="0"&gt;Starting...&lt;/log&gt;
+    &lt;/status&gt;
+    &lt;profiles&gt;
+            
+        &lt;profile&gt;
+         &lt;input&gt;
+            &lt;InputTemplate id="region" format="PlainTextFormat" label="Table of archive images, generated by mArchiveList." mimetype="text/plain" extension="tbl" optional="no" unique="no" acceptarchive="no"&gt;
+                &lt;StaticParameter id="encoding" name="Encoding" description="The character encoding of the file" value="utf-8"/&gt;
+            &lt;/InputTemplate&gt;
+         &lt;/input&gt;
+         &lt;output&gt;
+            &lt;OutputTemplate id="output" format="PlainTextFormat" label="num-images from region.tbl are retrieved into the current directory. num-failed is a count of failed attempts to retrieve images; turn on debugging to see the errors generated by mArchiveGet." mimetype="text/plain" extension="fits" parent="region" unique="no"&gt;
+                &lt;meta id="encoding"&gt;utf-8&lt;/meta&gt;
+            &lt;/OutputTemplate&gt;
+         &lt;/output&gt;
+        &lt;/profile&gt;
+
+    &lt;/profiles&gt;
+    &lt;parameters&gt;
+        &lt;parametergroup name="Switches"&gt;
+                    &lt;ChoiceParameter id="debugg_level" name="debugg_level" description="Prints out additional debugging information; in this version, the only supported level is 1."&gt; &lt;choice id="0" selected="1"&gt;0&lt;/choice&gt; &lt;choice id="1"&gt;1&lt;/choice&gt;&lt;/ChoiceParameter&gt;
+        &lt;/parametergroup&gt;
+    &lt;/parameters&gt;
+    &lt;program matchedprofiles="0"&gt;
+        &lt;outputfile name="region.tbl.fits" template="output" xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/region.tbl.fits"&gt;
+                &lt;inputfile name="region.tbl" template="region" xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/input/region.tbl"/&gt;
+        &lt;/outputfile&gt;
+    &lt;/program&gt;
+    &lt;output&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/error.log"&gt;
+                &lt;name&gt;error.log&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_004_003.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_004_003.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_002_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_002_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_004.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_004.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_002.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_002.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_006_006.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_006_006.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_005_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_005_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_001_005.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_001_005.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+            &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/output/poss2ukstu_blue_003_001.fits.gz"&gt;
+                &lt;name&gt;poss2ukstu_blue_003_001.fits.gz&lt;/name&gt;
+            &lt;/file&gt;
+    &lt;/output&gt;
+    &lt;inputsources&gt;
+    &lt;/inputsources&gt;
+    &lt;input&gt;
+        &lt;file xlink:type="simple" xlink:href="http://0.0.0.0:8081/1/input/region.tbl" template="region"&gt;
+            &lt;name&gt;region.tbl&lt;/name&gt;
+        &lt;/file&gt;
+    &lt;/input&gt;
+&lt;/clam&gt;</xmlDocument>
+  <xpathExpression>/clam/status/@code</xpathExpression>
+  <xpathNamespaceMap>
+    <entry>
+      <string>xlink</string>
+      <string>http://www.w3.org/1999/xlink</string>
+    </entry>
+  </xpathNamespaceMap>
+</net.sf.taverna.t2.activities.xpath.XPathActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Loop</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.LoopConfiguration xmlns="">
+  <properties />
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.LoopConfiguration></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="xml_text" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>clam_status</name><inputPorts><port><name>yourprojectname</name><depth>0</depth></port><port><name>port</name><depth>0</depth></port></inputPorts><outputPorts><port><name>responseBody</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>status</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>rest-activity</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.activities.rest.RESTActivity</class><inputMap><map from="port" to="port" /><map from="yourprojectname" to="yourprojectname" /></inputMap><outputMap><map from="status" to="status" /><map from="responseBody" to="responseBody" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.rest.RESTActivityConfigurationBean xmlns="">
+  <httpMethod>GET</httpMethod>
+  <urlSignature>http://0.0.0.0:{port}/{yourprojectname}/</urlSignature>
+  <acceptsHeaderValue>application/xml</acceptsHeaderValue>
+  <contentTypeForUpdates>application/xml</contentTypeForUpdates>
+  <outgoingDataFormat>String</outgoingDataFormat>
+  <sendHTTPExpectRequestHeader>false</sendHTTPExpectRequestHeader>
+  <showRedirectionOutputPort>false</showRedirectionOutputPort>
+  <showActualUrlPort>false</showActualUrlPort>
+  <showResponseHeadersPort>false</showResponseHeadersPort>
+  <escapeParameters>true</escapeParameters>
+  <otherHTTPHeaders />
+  <activityInputs>
+    <entry>
+      <string>port</string>
+      <java-class>java.lang.String</java-class>
+    </entry>
+    <entry>
+      <string>yourprojectname</string>
+      <java-class>java.lang.String</java-class>
+    </entry>
+  </activityInputs>
+</net.sf.taverna.t2.activities.rest.RESTActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.5</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="yourprojectname" depth="0" /><port name="port" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor></processors><conditions /><datalinks><datalink><sink type="processor"><processor>XPath_Service</processor><port>xml_text</port></sink><source type="processor"><processor>clam_status</processor><port>responseBody</port></source></datalink><datalink><sink type="processor"><processor>clam_status</processor><port>yourprojectname</port></sink><source type="dataflow"><port>yourprojectname</port></source></datalink><datalink><sink type="processor"><processor>clam_status</processor><port>port</port></sink><source type="dataflow"><port>port</port></source></datalink><datalink><sink type="dataflow"><port>execution_status</port></sink><source type="processor"><processor>XPath_Service</processor><port>firstNode</port></source></datalink><datalink><sink type="dataflow"><port>responseBody</port></sink><source type="processor"><processor>clam_status</processor><port>responseBody</port></source></datalink><datalink><sink type="dataflow"><port>status</port></sink><source type="processor"><processor>clam_status</processor><port>status</port></source></datalink></datalinks><annotations><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>5b711046-d873-4c81-860d-fe6ab212f7cd</identification>
+      </annotationBean>
+      <date>2019-05-14 17:10:02.847 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>2a4d4b62-aa46-45da-a214-fc1300f4cd53</identification>
+      </annotationBean>
+      <date>2019-05-14 17:10:27.308 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>5dd91c89-7925-4e98-bf11-fc26c56c7d7c</identification>
+      </annotationBean>
+      <date>2019-05-14 17:10:28.582 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>6df1efe8-f9b0-46ff-9fe1-c950800b7260</identification>
+      </annotationBean>
+      <date>2019-05-14 17:07:15.12 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>403d2dc3-d155-495e-95b7-16e802d413d5</identification>
+      </annotationBean>
+      <date>2019-05-14 16:56:48.438 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>425c8969-955a-4d82-a50c-64652875131b</identification>
+      </annotationBean>
+      <date>2019-05-14 16:45:20.408 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>8211860e-b799-49a9-9a57-b0266e56f30f</identification>
+      </annotationBean>
+      <date>2019-05-14 16:56:56.65 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>cdd71255-cb52-4930-b0d0-bb05c03fe05f</identification>
+      </annotationBean>
+      <date>2019-05-14 16:52:36.456 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>3de4f492-571b-48d9-bb0a-402a7e10c9fc</identification>
+      </annotationBean>
+      <date>2019-05-14 17:09:35.460 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>6b2c1a7d-dd9e-4c26-9bcc-ca403a84330b</identification>
+      </annotationBean>
+      <date>2019-05-14 17:10:08.720 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>2992840a-766f-427c-9507-af3935809dcd</identification>
+      </annotationBean>
+      <date>2019-05-14 16:46:34.904 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>034d875e-163f-400a-aef7-995e01ca89b8</identification>
+      </annotationBean>
+      <date>2019-05-14 17:06:37.279 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>575de19b-f366-40b5-8d40-62b1c713f0ad</identification>
+      </annotationBean>
+      <date>2019-05-14 17:11:15.659 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>4b00011f-2d10-4361-8b21-628c9427575c</identification>
+      </annotationBean>
+      <date>2019-05-14 16:52:28.745 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>48986f84-ab52-4539-a027-668219fc3465</identification>
+      </annotationBean>
+      <date>2019-05-14 17:08:35.804 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2></annotations></dataflow></workflow>
